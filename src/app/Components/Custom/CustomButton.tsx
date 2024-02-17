@@ -44,7 +44,7 @@ export const CustomButton = () => {
               if (!connected) {
                 return (
                   <div className=''>
-                    <button className='bg-[#414A78] p-2 border-2 border-solid border-black rounded-2xl shadow-xl hover:bg-pink-300' onClick={openConnectModal} type="button">
+                    <button className='bg-[#414A78] p-2 border-2 font-text border-solid border-black rounded-2xl hover:bg-pink-300 shadow-2xl shadow-blue-800/50' onClick={openConnectModal} type="button" style={{ boxShadow: "0 0.25rem 0 0 #000" }}>
                       Connect Wallet
                     </button>
                   </div>
@@ -54,7 +54,7 @@ export const CustomButton = () => {
               if (chain.unsupported) {
                 return (
                   <div className=''>
-                    <button className='bg-[#414A78] p-2 border-2 border-solid border-black rounded-2xl shadow-xl hover:bg-pink-300' onClick={openChainModal} type="button">
+                    <button className='bg-[#414A78] p-2 border-2 border-solid border-black font-text rounded-2xl hover:bg-pink-300 shadow-2xl shadow-blue-800/50' onClick={openChainModal} type="button" style={{ boxShadow: "0 0.25rem 0 0 #000" }}>
                       Wrong network
                     </button>
                   </div>
@@ -63,20 +63,21 @@ export const CustomButton = () => {
               return (
                 <div className='flex gap-4'>
                   <button
-                    className='bg-[#414A78] p-2 border-2 border-solid border-black rounded-2xl shadow-xl hover:bg-pink-300'
+                    className='bg-[#414A78] flex p-2 border-2 border-solid border-black font-text rounded-2xl hover:bg-pink-300 shadow-2xl shadow-blue-800/50'
                     onClick={openChainModal}
-                    style={{ display: 'flex', alignItems: 'center' }}
+                    style={{ display: 'flex', alignItems: 'center', boxShadow: "0 0.25rem 0 0 #000" }}
                     type="button"
                   >
                     {chain.hasIcon && (
-                      <div
+                      <div className='flex justify-center'
                         style={{
                           background: chain.iconBackground,
-                          width: 24,
-                          height: 24,
+                          width: 30,
+                          height: 30,
                           borderRadius: 999,
                           overflow: 'hidden',
-                          marginRight: 4,
+                          marginRight: 0,
+                          
                         }}
                       >
                         {chain.iconUrl && (
@@ -84,24 +85,19 @@ export const CustomButton = () => {
                             className=''
                             alt={chain.name ?? 'Chain icon'}
                             src={chain.iconUrl}
-                            style={{ width: 24, height: 24 }}
+                            style={{ width: 30, height: 30 }}
                           />
                         )}
                       </div>
                     )}
                   </button>
-                  <button className={`flex bg-[#414A78] border-2 border-solid border-black p-2 rounded-3xl shadow-xl font-text text-2xl font-black text-[#ffffff] hover:bg-pink-300`} onClick={openAccountModal} type="button">
+                  <button className={`flex bg-[#414A78] border-2 border-solid border-black p-2 rounded-3xl font-text text-2xl font-black text-[#ffffff] hover:bg-pink-300 shadow-2xl shadow-blue-800/50`} onClick={openAccountModal} type="button" style={{boxShadow: "0 0.25rem 0 0 #000"}}>
                     {account.displayName}
-                    {account.balanceSymbol}
+                    {account.ensAvatar}
                     {account.displayBalance
                       ? ` (${account.displayBalance})`
                       : ''}
                   </button>
-                  {accountStatus.status === 'connected' && (
-                  <button className='flex bg-[#414A78] border-2 border-solid border-black p-2 rounded-3xl shadow-xl font-text text-2xl font-black hover:bg-pink-300' type="button" onClick={() => disconnect()}>
-                    Disconnect
-                  </button>
-        )}
                 </div>
               );
             })()}

@@ -1,8 +1,28 @@
 import React, { useState } from 'react';
 import Image from "next/image";
+import NftComponent from "./NftComponent";
 
 export default function Table() {
     const [isHumpingSelected, setIsHumpingSelected] = useState(true);
+    const nft = {
+    "name": "Humpy D. Luffy",
+    "description": "Custom unicorn signifying Top Gun Hatch's entry to the Hump Club",
+
+    "image": "https://ipfs.io/ipfs/QmdH35eydDNuZzCPeWCt2KsF5xue6P4RkJtP4gzYoUx5qp",
+    "attributes": [
+      {
+        "trait_type": "Created With",
+        "value": "Top Gun Hatch"
+      },
+      {
+        "trait_type": "Favourite Position",
+        "value": "O's in the Ocean"
+      }
+    ],
+    "compiler": "Handsome, hilarious and clever dev, Smitty",
+    "isStacking": true
+    }
+    const tabNft = [nft, nft,nft,nft,nft,nft,nft,nft,nft,nft,nft,nft,];
 
     function handleIsHumpingSelected(){
         setIsHumpingSelected(true);
@@ -13,75 +33,48 @@ export default function Table() {
     }
 
     return(
-        <div className="w-full h-full">
+        <div className="">
             <div className="h-screen" style={{ backgroundImage: "url('/Mansion.webp')", backgroundSize: "100% 100%"}}>
-                <div className='h-5/6 flex justify-center items-center'>
+                <div className='h-5/6 flex justify-center items-start'>
                     {isHumpingSelected ?
-                    <div>
-                        <div className='flex'>
-                            <img src='/Humping_selected.webp' onClick={handleIsNotHumpingSelected} className="rounded-t-3xl text-3xl w-full border-t-2 border-l-2 border-[#414A78]" />
-                            <img src='/No_Humping_selected.jpeg' onClick={handleIsHumpingSelected} className="rounded-t-3xl text-3xl w-full border-r-2 border-l-2 border-t-2 border-[#414A78]" />
+                    <div className=''>
+                        <div className='content-center w-full grid grid-cols-2 mt-56 xl:mt-40'>
+                            <div className='border-t-2 border-l-2 border-r-2 border-b-2  border-[#414A78] rounded-t-3xl bg-white'>
+                                <img src='/Humping_selected.webp' onClick={handleIsNotHumpingSelected} className="rounded-t-3xl text-3xl w-full h-full transition duration-500 hover:scale-y-90" />
+                            </div>
+                            <div className='border-t-2 border-l-2 border-r-2 border-b-2  border-[#414A78] rounded-t-3xl bg-white'>
+                                <img src='/No_Humping_selected.jpeg' onClick={handleIsHumpingSelected} className="rounded-t-3xl text-3xl w-full h-full transition duration-500 hover:scale-y-90" />
+                            </div>
                         </div>
-                        <div className=''>
-                        <table className="w-full border-2 border-[#414A78]">
-                            <tbody className='border-black border-2 h-96'>
-                                <tr className='w-full border-2 border-[#414A78]'>
-                                    <td className='border-2 w-1/3 border-[#414A78] text-center'>Melissa</td>
-                                    <td className='border-2 border-[#414A78] text-center'>Melissa</td>
-                                    <td className='border-2 border-[#414A78] text-center'>6000</td>
-                                </tr>
-                                <tr className='border-2 border-[#414A78]'>
-                                    <td className='border-2 border-[#414A78] text-center'>Melissa</td>
-                                    <td className='border-2 border-[#414A78] text-center'>6000</td>
-                                    <td className='border-2 border-[#414A78] text-center'>6000</td>
-                                </tr>
-                                <tr className='border-2 border-[#414A78]'>
-                                    <td className='border-2 border-[#414A78] text-center'>Melissa</td>
-                                    <td className='border-2 border-[#414A78] text-center'>6000</td>
-                                </tr>  
-                            </tbody>
-                        </table>
+                            
+                        <div className="grid content-center w-full ">
+                            <div className={`grid h-full grid-cols-pannel`}>
+                                {tabNft.map(nft=>{
+                                        return <NftComponent key={nft.name}  profileNft={nft.image} favPosition={nft.attributes[1].value} />
+                                    })}
+                            </div>                        
                         </div>
-                        
                     </div>
                     
                     :
-                    <table className="">
-                    <thead className='w-full'>
-                        <tr className='w-full rounded-3xl'>
-                            <th className="rounded-3x">
-                                <img src='/Humping_selected.webp' onClick={handleIsNotHumpingSelected} className="rounded-t-3xl text-3xl w-full border-t-2 border-l-2 border-[#414A78]" />
-                            </th>
-                            <th className='rounded-3xl'>
-                                <img src='/No_Humping_selected.jpeg' onClick={handleIsHumpingSelected} className="rounded-t-3xl text-3xl w-full border-r-2 border-l-2 border-[#414A78]" />
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody className='w-full border-black border-2 h-96'>
-                        <tr className='border-2 border-[#414A78]'>
-                        <td className='border-2 border-[#414A78] text-center'>Melissa</td>
-                            <td className='border-2 border-[#414A78] text-center'>6000</td>
-                        </tr>
-                        <tr className='border-2 border-[#414A78]'>
-                        <td className='border-2 border-[#414A78] text-center'>Melissa</td>
-                            <td className='border-2 border-pink-[#414A78] text-center'>6000</td>
-                        </tr>
-                        <tr className='border-2 border-[#414A78]'>
-                        <td className='border-2 border-[#414A78] text-center'>Melissa</td>
-                            <td className='border-2 border-pink-[#414A78] text-center'>6000</td>
-                        </tr><tr className='border-2 border-[#414A78]'>
-                        <td className='border-2 border-[#414A78] text-center'>Melissa</td>
-                            <td className='border-2 border-pink-[#414A78] text-center'>6000</td>
-                        </tr><tr className='border-2 border-[#414A78]'>
-                        <td className='border-2 border-[#414A78] text-center'>Melissa</td>
-                            <td className='border-2 border-pink-[#414A78] text-center'>6000</td>
-                        </tr><tr className='border-2 border-[#414A78]'>
-                        <td className='border-2 border-[#414A78] text-center'>Melissa</td>
-                            <td className='border-2 border-pink-[#414A78] text-center'>6000</td>
-                        </tr>
-                    </tbody>
-                </table>
-
+                    <div className=''>
+                        <div className='content-center w-full grid grid-cols-2 mt-56 xl:mt-40'>
+                            <div className='border-t-2 border-l-2 border-r-2 border-b-2  border-[#414A78] rounded-t-3xl bg-white'>
+                                <img src='/Humping_selected.webp' onClick={handleIsNotHumpingSelected} className="rounded-t-3xl text-3xl w-full h-full transition duration-500 hover:scale-y-90" />
+                            </div>
+                            <div className='border-t-2 border-l-2 border-r-2 border-b-2  border-[#414A78] rounded-t-3xl bg-white'>
+                                <img src='/No_Humping_selected.jpeg' onClick={handleIsHumpingSelected} className="rounded-t-3xl text-3xl w-full h-full transition duration-500 hover:scale-y-90" />
+                            </div>
+                        </div>
+                            
+                        <div className="grid content-center w-full ">
+                            <div className={`grid h-full grid-cols-pannel`}>
+                                {tabNft.map(nft=>{
+                                        return <NftComponent key={nft.name}  profileNft={nft.image} favPosition={nft.attributes[1].value} />
+                                    })}
+                            </div>                        
+                        </div>
+                    </div>
                 }
                 </div>
             </div>

@@ -13,6 +13,7 @@ import {
 import { CustomButton } from "./Components/Custom/CustomButton.tsx"
 import Navbar from './Components/Navbar/Navbar';
 import Table from './Components/Table/Table';
+import Navigation from './Components/Navbar/Navigation';
 
 const ensAddress = '0xC4789f786E3cD88Ce22c19Ba790F8Ad548f2001e'
 
@@ -32,19 +33,20 @@ function App() {
   })
 
   return (
-    <>
-      <div>
+      <div className="min-h-full w-full">
         <div>
-          <Navbar/>
+          <Navigation />
         </div> 
         <div className='flex justify-center mt-6'>
-          <h2 className={`text-[#414A78] text-3xl font-text font-bold mb-4`}>Welcome to the Unicorn Humping</h2>
+          <h2 className={`text-[#414A78] text-8xl font-text font-bold mt-4 mb-4`}>Welcome to the Unicorn Humping</h2>
+        </div>
+        <div>
+
         </div>
         <div className='' >
           <Table />
         </div>
       </div>
-    </>
   )
 }
 
