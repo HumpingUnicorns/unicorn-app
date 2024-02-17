@@ -1,43 +1,48 @@
 'use client'
 
-import {useAccount, useConnect, useDisconnect, useSwitchChain} from 'wagmi';
+import {useAccount, useConnect, useDisconnect, useSwitchChain, useChains, useEnsName} from 'wagmi';
 import { avalanche } from '@wagmi/core/chains'
 import { switchChain } from '@wagmi/core';
 import { config } from '@/wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import {
+  useConnectModal,
+  useAccountModal,
+  useChainModal,
+} from '@rainbow-me/rainbowkit';
+import { CustomButton } from "./Components/Custom/CustomButton.tsx"
+import Navbar from './Components/Navbar/Navbar';
+import Table from './Components/Table/Table';
+
+const ensAddress = '0xC4789f786E3cD88Ce22c19Ba790F8Ad548f2001e'
 
 function App() {
+  const { openChainModal } = useChainModal();
   const account = useAccount()
   const { connectors, connect, status, error } = useConnect()
   const { disconnect } = useDisconnect()
+  const { chainInfo } = useChains();
+  const { openAccountModal } = useAccountModal();
   const result = async() => await switchChain(config, {
     chainId: avalanche.id, 
+  })
+
+  const { data, isLoading } = useEnsName({
+    address: ensAddress
   })
 
   return (
     <>
       <div>
-        <ConnectButton accountStatus="avatar" />
-        <h2>Account</h2>
-        {account.chainId !== avalanche.id ?
-            <div>
-              OMG SALE FOU
-            </div>
-            :
-            <div>
-              status: {account.status}
-              <br/>
-              addresses: {JSON.stringify(account.addresses)}
-              <br/>
-              chainId: {account.chainId}
-            </div>
-        }
-
-        {account.status === 'connected' && (
-            <button type="button" onClick={() => disconnect()}>
-              Disconnect
-            </button>
-        )}
+        <div>
+          <Navbar/>
+        </div> 
+        <div className='flex justify-center mt-6'>
+          <h2 className={`text-[#414A78] text-3xl font-text font-bold mb-4`}>Welcome to the Unicorn Humping</h2>
+        </div>
+        <div className='' >
+          <Table />
+        </div>
       </div>
     </>
   )
