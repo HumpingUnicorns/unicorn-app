@@ -1,50 +1,52 @@
 'use client'
-
-import {useAccount, useConnect, useDisconnect, useSwitchChain, useChains, useEnsName} from 'wagmi';
-import { avalanche } from '@wagmi/core/chains'
-import { switchChain } from '@wagmi/core';
-import { config } from '@/wagmi';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-import {
-  useConnectModal,
-  useAccountModal,
-  useChainModal,
-} from '@rainbow-me/rainbowkit';
-import { CustomButton } from "./Components/Custom/CustomButton.tsx"
-import Navbar from './Components/Navbar/Navbar';
 import Table from './Components/Table/Table';
 import Navigation from './Components/Navbar/Navigation';
-
-const ensAddress = '0xC4789f786E3cD88Ce22c19Ba790F8Ad548f2001e'
+import Image from '../../node_modules/next/image';
+import { useAccount } from 'wagmi';
 
 function App() {
-  const { openChainModal } = useChainModal();
-  const account = useAccount()
-  const { connectors, connect, status, error } = useConnect()
-  const { disconnect } = useDisconnect()
-  const { chainInfo } = useChains();
-  const { openAccountModal } = useAccountModal();
-  const result = async() => await switchChain(config, {
-    chainId: avalanche.id, 
-  })
-
-  const { data, isLoading } = useEnsName({
-    address: ensAddress
-  })
+  const account = useAccount();
+  console.log(account);
 
   return (
-      <div className="min-h-full w-full">
+      <div>
+        <div style={{
+        zIndex: -1,
+        position: "fixed",
+        width: "100vw",
+        height: "100vh"
+      }}>
+        <Image 
+          src="/background.png"
+          alt="Mountains with snow"
+          layout="fill"
+          objectFit='cover'
+        />
+      </div>
         <div>
           <Navigation />
         </div> 
-        <div className='flex justify-center mt-6'>
-          <h2 className={`text-[#414A78] text-8xl font-text font-bold mt-4 mb-4`}>Welcome to the Unicorn Humping</h2>
-        </div>
-        <div>
+        <div className='flex flex-col justify-center items-center mt-6'>
+          <h2 className={`flex justify-center border-solid drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] text-[#f3f3f3] text-8xl font-text font-bold mt-4 mb-4`}>Welcome to the Unicorn Humping</h2>
+          <h2 className={`flex justify-center border-solid drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] text-[#f3f3f3] text-6xl font-text font-bold mt-4 mb-10`}>Foreplay</h2>
+          addresses: {JSON.stringify(account.addresses)}
 
         </div>
-        <div className='' >
+        <div className='flex justify-center place-content-start' >
           <Table />
+        </div>
+        <div className="grid grid-rows-1 grid-cols-3 gap-1 place-items-center  w-full text-2xl font-text font-black uppercase mt-4">
+            <div style={{ borderRadius: 600 }} className={`flex flex-col justify-center pl-2 pr-2 pt-6 pb-6 w-3/5 text-white border-4 border-[#F880C2] bg-[#414A78] shadow-2xl shadow-[#414A78]`}>
+                <p className={`flex justify-center w-full font-spegiel  text-xxs md:text-sm lg:text-xl xl:text-4xl`}>Total humping</p>
+                <h2 className={`flex justify-center w-full font-texxt text-base md:text-sm lg:text-base xl:text-4xl`}>56</h2>
+            </div>
+            <div>
+
+            </div>
+            <div style={{ borderRadius: 600 }} className={`flex flex-col justify-center pl-2 pr-2 pt-6 pb-6 w-3/5 text-white border-4 border-[#F880C2] bg-[#414A78] shadow-2xl shadow-[#414A78]`}>
+                <p className={`flex justify-center w-full font-spegiel  text-xxs md:text-sm lg:text-xl xl:text-4xl`}>Day until</p>
+                <h2 className={`flex justify-center w-full font-texxt text-base md:text-sm lg:text-base xl:text-4xl`}>5</h2>
+            </div>
         </div>
       </div>
   )

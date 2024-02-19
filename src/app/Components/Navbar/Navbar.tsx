@@ -11,7 +11,7 @@ const Navbar = ({ toggle }: { toggle: () => void }) => {
           <div className="flex justify-between items-center h-full">
             <div className="flex items-center gap-10">
             <Logo />
-            <div className="flex gap-4">
+            <div className="flex gap-4 bg-[#EAEAEC] rounded-full p-4" style={{ boxShadow: "0 0.25rem 0 0 #000" }}>
                     <a href="https://twitter.com/HumpingUnic0rns">
                         <Image src='/twitter_logo.png' alt="twitter_logo"
                             width={50}
@@ -19,7 +19,7 @@ const Navbar = ({ toggle }: { toggle: () => void }) => {
                             style={{ borderRadius: 999 }} className="" 
                         />
                     </a>
-                    <a href="discord.gg/eKPsXYsDnE">
+                    <a href="https://discord.gg/eKPsXYsDnE">
                         <Image src='/discord_logo.webp' alt="discord_logo"
                             width={50}
                             height={50}
