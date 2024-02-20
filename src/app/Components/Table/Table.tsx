@@ -17,36 +17,34 @@ export default function Table() {
         setNftSelected([...nftSelected, nft]);        
       };
 
-    const handleRemoveObjectToList = (indexToRemoveId: int) => {
+    const handleRemoveObjectToList = (indexToRemoveId: Number) => {
         const updatedNftSelected = nftSelected.filter((item, index) => index !== indexToRemoveId);
         console.log(updatedNftSelected)
         setNftSelected(updatedNftSelected);
     }  
 
-    const baseURL = `https://barn.joepegs.com/v3/users/${"2"}/items?`;
-    const getUsers = async () => {
-    const params = {
-        collectionAddresses: CONTRACT_ADDRESS
-    };
-    try {
-        const response = await axios.get(baseURL, { params });
-        const data = response.data;
-        console.log(data);
-    } catch (error) {
-        console.error('Error fetching users:', error);
-    }
-    };
-
-    useEffect(()=> {
-        function lol(){
-            console.log(JSON.stringify(account.address))
+    useEffect(() => {
+        if (account.address) { // Vérifie si account.address est défini
+            const baseURL = `https://api.joepegs.dev/v3/users/${account.address}/items`;
+            const getItems = async () => {
+                const params = {
+                    collectionAddresses: CONTRACT_ADDRESS
+                };
+                const headers = {
+                    'x-joepegs-api-key': 'ePy3wz7ourtEBZCvUlcDm6tElL64IXTqoXYN'
+                };
+                try {
+                    const response = await axios.get(baseURL, { params, headers });
+                    const data = response.data;
+                    console.log(data);
+                } catch (error) {
+                    console.error('Error fetching items:', error);
+                }
+            };
+            getItems();
         }
-        setInterval(
-            lol
-        ,1000)
-        
-        //getUsers();
-    }, [])
+    }, [account.address]); // Déclenche uniquement lorsque account.address change
+    
 
 
     const nft = {

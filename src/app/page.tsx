@@ -1,4 +1,6 @@
 'use client'
+
+import React, { useEffect, useState } from 'react';
 import Table from './Components/Table/Table';
 import Navigation from './Components/Navbar/Navigation';
 import Image from '../../node_modules/next/image';

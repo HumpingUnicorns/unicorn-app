@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CustomButton } from "../Custom/CustomButton.tsx"
+import { CustomButton } from "../Custom/CustomButton"
 
 const Sidebar = ({
         isOpen,
