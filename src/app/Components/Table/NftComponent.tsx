@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 
-export default function NftComponent({ id, profileNft, favPosition, handleAddObjectToList, handleRemoveObjectToList, nft }){
+export default function NftComponent({ id, profileNft, favPosition, handleAddObjectToList, handleRemoveObjectToList, nft }: any){
     const [isSelected, setIsSelected] = useState(false);
 
     function handleIsSelected(event:Event){
         setIsSelected(!isSelected);
-        if(isSelected===true){
+        if(isSelected){
             handleAddObjectToList(nft);            
         }else{
             handleRemoveObjectToList(id);

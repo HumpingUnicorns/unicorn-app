@@ -2,6 +2,9 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { type ReactNode } from 'react'
+import { headers } from 'next/headers'
+import { cookieToInitialState } from 'wagmi'
+import { config } from '../wagmi';
 
 import { Providers } from './providers'
 
