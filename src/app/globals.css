@@ -43,3 +43,21 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+.loader {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #ed61bc;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
