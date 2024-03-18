@@ -5,18 +5,24 @@ import NftComponent from "@/app/Components/Table/NftComponent/NftComponent";
 import NftFilledComponent from '@/app/Components/Table/NftComponent/NftFilledComponent';
 import TotalHumping from './DisplayComponent/TotalHumping';
 
-export default function Table({nftData}: any) {
+export default function Table({nftData, stakedNftDataFromOwner}: any) {
 
     const [isHumpingSelected, setIsHumpingSelected] = useState(true);
     const [isChange, setIsChange] = useState(false);
     const [nftSelected, setNftSelected] = useState<any>([]);
+    const [nbNftSelected, setNbNftSelected] = useState<any>(0);
     const [nftFilled, setNftFilled] = useState<any>([]);
+    const [nftStakedFilled, setNftStakedFilled] = useState<any>([]);
 
     async function handleAddTokenIdToList(tokenId : Number){
         const tmpNftSelectedList = nftSelected;
         tmpNftSelectedList.push(tokenId);
         setNftSelected(tmpNftSelectedList);
-        console.log('new list : ', nftSelected);  
+        setNbNftSelected(tmpNftSelectedList.length);
+        console.log(nftSelected);
+        console.log(nbNftSelected);
+        
+        
     };
 
     // Remove object from list by index
@@ -24,6 +30,8 @@ export default function Table({nftData}: any) {
         const updatedNftSelected = nftSelected.filter((itemTokenId: Number) => itemTokenId !== tokenIdToRemoved);
         console.log('Remove object from list: ', updatedNftSelected);
         setNftSelected(updatedNftSelected);
+        setNbNftSelected(updatedNftSelected.length);
+        console.log(nbNftSelected);
     }
 
     // Utilisez un effet pour remplir nftFilled une seule fois
@@ -35,12 +43,28 @@ export default function Table({nftData}: any) {
             for (let i = 0; i < additionalNftCount; i++) {
                 filledNfts.push({
                     id: i,
-                    image: "./Filled_Unicorn.png"
+                    image: "/humping_images/Filled_Unicorn.png"
                 });
             }
             setNftFilled(filledNfts);
         }
     }, []);
+
+    useEffect(() => {
+        // If nftData is less than 6, fill the rest with empty nfts
+        if (stakedNftDataFromOwner.length < 6) {
+            const additionalNftCount = 6 - stakedNftDataFromOwner.length;
+            const filledNfts = [];
+            for (let i = 0; i < additionalNftCount; i++) {
+                filledNfts.push({
+                    id: i,
+                    image: "/humping_images/Filled_Unicorn.png"
+                });
+            }
+            setNftStakedFilled(filledNfts);
+        }
+    }, []);
+
 
     function handleIsHumpingSelected() {
         setIsHumpingSelected(true);
@@ -55,13 +79,13 @@ export default function Table({nftData}: any) {
     }
 
     return (
-        <div className="">
+        <div className="w-full ml-6">
             {isHumpingSelected ?
                 <div className=''>
                     <div className='content-center place-items-end justify-end w-full grid grid-cols-2'>
                         <div className='place-self-center'>
                             <img alt='Humping tab' src='/humping_images/Humping.png' onClick={handleIsHumpingSelected}
-                                 className="bg-[#414A78] rounded-t-xl w-full h-full transition duration-500 hover:opacity-90"/>
+                                 className="bg-[#414A78] rounded-t-xl w-full h-full transition duration-500 hover:opacity-90" style={{cursor: 'pointer'}}/>
                         </div>
                         <div className=''>
                             <img alt='Not Humping tab' src='/humping_images/Not_Humping_Not_selected.png' onClick={handleIsNotHumpingSelected}
@@ -71,8 +95,8 @@ export default function Table({nftData}: any) {
                     <div className='border-2 rounded-3xl bg-[#6f84ef57]'>
                         <div className="grid content-center w-full">
                             <div className={`grid h-full grid-cols-pannel p-4 gap-4`}>
-                                {nftData !== undefined && nftData.length > 0 &&
-                                    nftData.map((nft: any) => {
+                                {stakedNftDataFromOwner !== undefined && stakedNftDataFromOwner.length > 0 &&
+                                    stakedNftDataFromOwner.map((nft: any) => {
                                         return <NftComponent key={nft.id} id={nft.id} profileNft={nft.metadata.image}
                                                              nftTokenId={nft.tokenId}
                                                              favPosition={nft.metadata.attributes[1].value}
@@ -82,7 +106,7 @@ export default function Table({nftData}: any) {
                                                              isChange={isChange}/>
                                     })}
                                 {
-                                    nftFilled.map(nft => {
+                                    nftStakedFilled.map(nft => {
                                         return (
                                             <NftFilledComponent key={nft.id} id={nft.id} image={nft.image}/>
                                         )
@@ -112,7 +136,7 @@ export default function Table({nftData}: any) {
                                     nftTokenId={nft.tokenId}
                                     profileNft={nft.metadata.image} favPosition={nft.metadata.attributes[1].value}
                                     handleAddTokenIdToList={handleAddTokenIdToList}
-                                    handleRemoveTokenIdToList={handleRemoveTokenIdToList} nft={nft} />
+                                    handleRemoveTokenIdToList={handleRemoveTokenIdToList} nft={nft} isChange={isChange} />
                                 })}
                                 {
                                     nftFilled.map((nft: any) => {
@@ -127,7 +151,7 @@ export default function Table({nftData}: any) {
                 </div>
 
             }
-        <TotalHumping isHumpingSelected={isHumpingSelected} totalNft={nftData.length} nftSelected={nftSelected}/>
+        <TotalHumping isHumpingSelected={isHumpingSelected} totalNft={nftData.length} nftSelected={nftSelected} nbNftSelected={nbNftSelected}/>
         </div>
     )
 }

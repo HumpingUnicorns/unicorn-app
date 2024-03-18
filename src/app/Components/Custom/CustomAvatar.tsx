@@ -4,7 +4,7 @@ import Image from "next/image";
  export const CustomAvatar: AvatarComponent = ({ address, ensImage, size }) => {
     return (
       <Image
-        src={'/avatar.webp'}
+        src={'/humping_images/avatar.webp'}
         alt="Avatar"
         width={50}
         height={50}

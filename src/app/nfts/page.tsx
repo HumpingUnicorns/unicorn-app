@@ -1,22 +1,27 @@
 'use client'
 
 import { useEffect, useState, useTransition, useMemo } from "react";
-import { useAccount } from "wagmi";
+import { useAccount, useContractRead } from "wagmi";
 import { getAllNfts } from "@/app/services/actions/getNfts";
 import Table from "@/app/Components/Table/table";
 import TableNoNft from "@/app/Components/Table/tableNoNft";
 import Spinner from "../Components/Spinner/Spinner";
-import { useReadContract } from 'wagmi'
 import abi from "src/app/abi.json";
+import { getAllNftDataFromContract } from "../services/actions/getAllNfts";
+
 
 export default function NftPage() {
-    const { readContract } = useReadContract();
-    const CONTRACT_ADDRESS = "0x6b175474e89094c44da98b954eedeac495271d0f";
+    //const CONTRACT_ADDRESS = "0x6b175474e89094c44da98b954eedeac495271d0f";
+    const MOCK_CONTRACT_ADDRESS = "0xAF23849c758773F3F761648BaB9dcd851f6Fec62";
     // Get the user address
     const userAddress = useAccount().address;
     const [isPending, startTransition] = useTransition()
     const [nftData, setNftData] = useState<any>([]);
+    const [stakedNftDataFromOwner, setStakedNftDataFromOwner] = useState<any>([]);
+
+    const [nftIdFromContract, setNftIdFromContract] = useState<any>([]);
     const [nftDataFromContract, setNftDataFromContract] = useState<any>([]);
+
     const [error, setError] = useState(null);
 
     // This function will be called to get the NFTs for the user
@@ -31,28 +36,53 @@ export default function NftPage() {
         }
     }
 
-    // This function will be called to get the NFTs for the user
-    async function getNftDataFromContract() {
-        const listOfNftStack = readContract({ 
+    
+    const {data: id, isSuccess} = 
+        useContractRead({ 
             abi,
-            address: CONTRACT_ADDRESS,
+            address: MOCK_CONTRACT_ADDRESS,
             functionName: 'getStakedIdsFromOwner',
             args: [
-              userAddress
+                userAddress
             ],
-         });
-         setNftDataFromContract(listOfNftStack);
-    }
+        });
+    useEffect(() => {  
+        if(isSuccess){
+            if(id != undefined || id.length>0){
+                const intIds = id.map(bigInt => parseInt(bigInt)); // ou Number(bigInt) pour une conversion explicite
+                setNftIdFromContract(intIds);
+                console.log(id);
+            }
+        } 
+    }, [id, isSuccess]);
+    
+
+    // This function will be called to get the NFTs for the user
+    async function getNftDataFromContract() {
+        try {
+           startTransition(async () => {
+               const result = await getAllNftDataFromContract();
+               setNftDataFromContract(result);
+           });
+       } catch (err: any) {
+           setError(err);
+       }        
+       console.log(nftIdFromContract);
+       
+       const getStakedNftDataFromOwner = nftDataFromContract.filter(item => nftIdFromContract.includes(item.tokenId));
+       setStakedNftDataFromOwner(getStakedNftDataFromOwner);
+   }
 
     // Call the function to get the NFTs
     useEffect(() => {
         getNftData();
-    }, []);
+        getNftDataFromContract();
+    }, [nftIdFromContract]);
 
     const TableComponent = useMemo(() => {
         if(isPending){
             if (nftData.length > 0) {
-                return <Table nftData={nftData} nftDataFromContract={nftDataFromContract} />;
+                return <Table nftData={nftData} stakedNftDataFromOwner={stakedNftDataFromOwner} />;
             } else {
                 return <TableNoNft />;
             }

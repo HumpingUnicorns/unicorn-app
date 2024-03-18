@@ -1,5 +1,5 @@
 import { http, createConfig, cookieStorage, createStorage } from 'wagmi'
-import { avalanche } from 'wagmi/chains'
+import { avalanche, avalancheFuji} from 'wagmi/chains'
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   metaMaskWallet,
@@ -22,11 +22,12 @@ const connectors = connectorsForWallets(
 
 
 export const config = createConfig({
-  chains: [avalanche],
+  chains: [avalanche, avalancheFuji],
   connectors: connectors,
   ssr: true,
   transports: {
     [avalanche.id]: http("https://avalanche.drpc.org/"),
+    [avalancheFuji.id]: http("https://api.avax-test.network/ext/bc/C/rpc")
   },
 })
 
