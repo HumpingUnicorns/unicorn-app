@@ -5,12 +5,12 @@ import Logo from "./Logo";
 
 const Navbar = ({ toggle }: { toggle: () => void }) => {
   return (
-    <div className="w-full h-20 sticky top-0">
+    <div className="w-full h-20 sticky top-0 mb-4">
       <div className="container mx-auto px-4 h-full">
         <div className="flex justify-between items-center h-full">
           <div className="flex items-center gap-10">
             <Logo />
-            <div className="flex gap-4 bg-[#EAEAEC] rounded-full p-4" style={{ boxShadow: "0 0.25rem 0 0 #000" }}>
+            <div className="flex gap-4 bg-[#EAEAEC] rounded-full p-4" style={{ boxShadow: "0 0.1rem 0 0 rgba(255, 255, 255, 0.1)" }}>
               <a href="https://twitter.com/HumpingUnic0rns">
                 <Image src='/twitter_logo.png' alt="twitter_logo"
                   width={50}
@@ -27,7 +27,6 @@ const Navbar = ({ toggle }: { toggle: () => void }) => {
               </a>
             </div>
           </div>
-
           <button
             type="button"
             className="inline-flex items-center md:hidden"
@@ -53,6 +52,7 @@ const Navbar = ({ toggle }: { toggle: () => void }) => {
           </div>
         </div>
       </div>
+      <hr className='w-full bg-white mb-4 xl:mb-8'></hr>
     </div>
   );
 };

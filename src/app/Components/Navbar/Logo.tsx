@@ -27,8 +27,8 @@ const Logo = () => {
         <Image
           src="/humping_images/avatar.webp"
           alt="Logo"
-          width={width < 1024 ? "50" : "100"}
-          height={width < 1024 ? "45" : "74"}
+          width={width < 1024 ? "50" : "80"}
+          height={width < 1024 ? "45" : "65"}
           className="relative"
         />
     </div>

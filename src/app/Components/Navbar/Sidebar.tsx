@@ -17,6 +17,18 @@ const Sidebar = ({
           top: ` ${isOpen ? "0" : "-100%"}`
         }}
       >
+         <div style={{
+                zIndex: -1,
+                position: "fixed",
+                width: "100vw",
+                height: "100vh"
+            }}>
+                <video autoPlay loop muted playsInline style={{ position: 'absolute', width: '100%', height: '100%', objectFit: 'cover' }}>
+                    <source src="/background/Hump_House_Background.mp4" type="video/mp4" />
+                </video>
+
+            </div>
+        
         <button className="absolute right-0 p-5" onClick={toggle}>
         {/* Close icon */}
           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"> 
@@ -28,10 +40,15 @@ const Sidebar = ({
         </button>
 
         <div className="flex justify-center w-full">
+        
             <div className=" justify-center items-start m-2 ">
             <div className="flex flex-col gap-16 justify-center items-center">
-                    <p className={`text-[#414A78] text-3xl font-text font-bold`}>Unicorn HUMPING</p>
-                </div>
+            <Image  width={200}
+                    height={120}
+                    style={{display: 'flex', position: 'justify-center', marginBottom: '30px'}}
+                    src="/humping_images/Hump_House.png"
+                    alt="title"
+                />                </div>
                 <div className="flex justify-center gap-4">
                     <a href="https://twitter.com/HumpingUnic0rns">
                         <Image src='/twitter_logo.png' alt="twitter_logo"

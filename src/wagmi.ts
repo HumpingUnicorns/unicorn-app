@@ -26,7 +26,7 @@ export const config = createConfig({
   connectors: connectors,
   ssr: true,
   transports: {
-    [avalanche.id]: http("https://avalanche.drpc.org/"),
+    [avalanche.id]: http("https://api.avax.network/ext/bc/C/rpc"),
     [avalancheFuji.id]: http("https://api.avax-test.network/ext/bc/C/rpc")
   },
 })

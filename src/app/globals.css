@@ -28,13 +28,29 @@
   src: url("../../public/fonts/PatrickHand-Regular.ttf");
 }
 
+@font-face {
+  font-family: "Meera";
+  src: url("../../public/fonts/MeeraInimai-Regular.ttf");
+}
+
+
 .font-text {
   font-family: 'Patrick', sans-serif;
 }
 
+.font-body {
+  font-family: 'Meera', sans-serif;
+}
+
 @media screen and (min-width: 568px) {
   .grid-cols-pannel {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .grid-cols-pannel {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
