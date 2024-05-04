@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from 'react';
 
-export default function NftComponent({ id, profileNft, nftTokenId, favPosition, handleAddTokenIdToList, handleRemoveTokenIdToList, isChange }: any){
-    const [isSelected, setIsSelected] = useState(false);
+interface NftComponentProps {
+    key: string; // Ou tout autre type approprié pour la clé
+    id: string;
+    profileNft: string; // Ou tout autre type approprié pour l'image
+    nftTokenId: string; // Ou tout autre type approprié pour l'ID du token NFT
+    favPosition: any; // Le type de cette propriété dépend de votre application
+    handleAddTokenIdToList: (tokenId: string) => void; // Le type de cette fonction dépend de votre application
+    handleRemoveTokenIdToList: (tokenId: string) => void; // Le type de cette fonction dépend de votre application
+    isChange: boolean; // Ou tout autre type approprié pour l'état de changement
+}
+
+export default function NftComponent({ id, profileNft, nftTokenId, favPosition, handleAddTokenIdToList, handleRemoveTokenIdToList, isChange }: NftComponentProps){
+    const [isSelected, setIsSelected] = useState<boolean>(false);
 
     useEffect(() => {
         setIsSelected(false);
     }, [isChange]);
 
-    function handleIsSelected(event:Event){
+    function handleIsSelected(event:any){
         setIsSelected(!isSelected);
         if(!isSelected){
             handleAddTokenIdToList(nftTokenId);            
@@ -17,7 +28,7 @@ export default function NftComponent({ id, profileNft, nftTokenId, favPosition, 
     }
 
     return(
-        <button onClick={event=>handleIsSelected(event)} >
+        <button onClick={event => handleIsSelected(event)} >
             {
             !isSelected ?
             <div className={` w-full h-full `}>

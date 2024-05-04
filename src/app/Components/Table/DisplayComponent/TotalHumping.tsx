@@ -7,16 +7,27 @@ const calculateTimeRemaining = () => {
     target.setUTCHours(0, 0, 0, 0);
     target.setDate(target.getDate() + (3 + 7 - target.getUTCDay()) % 7); // next wednesday
 
-    const timeRemaining = target.getTime() - now.getTime();
-    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    let timeRemaining = target.getTime() - now.getTime();
+    let days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-    return { days };
+     // Si la date cible est passée, réinitialiser le compte à rebours
+     if (timeRemaining <= 0) {
+        target.setDate(target.getDate() + 7); // Avancer d'une semaine
+        timeRemaining = target.getTime() - now.getTime();
+        days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    }
+
+    return { days, hours };
 };
-
 export default function TotalHumping({isHumpingSelected, totalNft, totalNftStacked, nftSelected, nbNftSelected} : any){  
     
-    
-    const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
+    type TimeRemaining = {
+        days: number,
+        hours: number
+    }
+    const [timeRemaining, setTimeRemaining] = useState<TimeRemaining>(calculateTimeRemaining() as TimeRemaining);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -49,7 +60,11 @@ export default function TotalHumping({isHumpingSelected, totalNft, totalNftStack
                         Fling</p>
                     <h2 className={`flex justify-center w-full font-body text-xs sm:text-sm md:text-xs lg:text-lg xl:text-xl`}> 
                     <div className="">
-                        <p>Days: {timeRemaining.days}</p>
+                        {timeRemaining.days > 0 ?
+                            <p>Days: {timeRemaining.days} </p>
+                        :
+                            <p>Hours: {timeRemaining.hours} </p>
+                        }
                     </div>
                     </h2>
                 </div>

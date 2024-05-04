@@ -1,6 +1,10 @@
 import React, { useContext, useState } from 'react';
 
-export default function NftFilledComponent({ id,image }){
+type NftFilled = {
+    id: number,
+    image:string
+}
+export default function NftFilledComponent({ id,image } : NftFilled){
     return(
         <div className={` w-full h-full `}>
         <div className='w-full h-full overflow-hidden bg-[#6e7cc4b1] border-2 border-white'>

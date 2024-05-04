@@ -22,12 +22,11 @@ const connectors = connectorsForWallets(
 
 
 export const config = createConfig({
-  chains: [avalanche, avalancheFuji],
+  chains: [avalanche],
   connectors: connectors,
   ssr: true,
   transports: {
     [avalanche.id]: http("https://api.avax.network/ext/bc/C/rpc"),
-    [avalancheFuji.id]: http("https://api.avax-test.network/ext/bc/C/rpc")
   },
 })
 

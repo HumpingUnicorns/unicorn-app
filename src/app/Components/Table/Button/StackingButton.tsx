@@ -10,11 +10,11 @@ import { config } from 'src/wagmi.ts'
 
 export default function StackingButton({isHumpingSelected, nftSelected, nbNftSelected} : any){
  
-    const userAddress = useAccount().address;
+    const userAddress = useAccount().address as String;
     const [styleButton, setStyle] = useState();
-    const [stakingTransactionStatus, setStakingTransactionStatus] = useState(false);
-    const [unstakingTransactionStatus, setUnstakingTransactionStatus] = useState(false);
-    const [transactionReceipt, setTransactionReicept] = useState(false);
+    const [stakingTransactionStatus, setStakingTransactionStatus] = useState<boolean>(false);
+    const [unstakingTransactionStatus, setUnstakingTransactionStatus] = useState<boolean>(false);
+    const [transactionReceipt, setTransactionReicept] = useState<boolean>(false);
     
 
     const Toast = Swal.mixin({
@@ -60,12 +60,12 @@ export default function StackingButton({isHumpingSelected, nftSelected, nbNftSel
     useEffect(()=>{
         if(nbNftSelected===0){
             setStyle({
-                cursor: 'not-allowed',
+                cursor: "not-allowed",
                 boxShadow: "0 0.25rem 0 0 rgba(255, 255, 255, 0)"
             })
         }else{
             setStyle({
-                cursor: 'pointer',
+                cursor: "pointer",
                 boxShadow: "0 0.25rem 0 0 rgba(255, 255, 255, 0)"
             })
         }        
@@ -77,7 +77,7 @@ export default function StackingButton({isHumpingSelected, nftSelected, nbNftSel
     },[stakingTransactionStatus, unstakingTransactionStatus])
         
     async function stakeManyFunction(listOfId: any){
-        const listIdTemp: any[] = listOfId.map(id => parseInt(id));
+        const listIdTemp: any[] = listOfId.map((id:string) => parseInt(id));
         try {
             // Appel de la fonction du contrat
             const { request } = await simulateContract(config , { 
@@ -103,7 +103,7 @@ export default function StackingButton({isHumpingSelected, nftSelected, nbNftSel
         } 
     }
 
-    async function stakeMany(e: any, listOfId: any){
+    async function stakeMany(e: any, listOfId: string[]){
         e.preventDefault();
         if(data.result){
            stakeManyFunction(listOfId);
@@ -117,9 +117,9 @@ export default function StackingButton({isHumpingSelected, nftSelected, nbNftSel
         }         
     }
 
-    async function unstakeMany(e: any, listOfId: []){
+    async function unstakeMany(e: any, listOfId: string[]){
         e.preventDefault();
-        const listIdTemp: any[] = listOfId.map(id => parseInt(id));
+        const listIdTemp: any[] = listOfId.map((id:string) => parseInt(id));
         try {
             // Appel de la fonction du contrat
             const { request } = await simulateContract(config , { 
@@ -163,7 +163,7 @@ export default function StackingButton({isHumpingSelected, nftSelected, nbNftSel
                 onClick={(e)=>unstakeMany(e, nftSelected)}
                 disabled={nbNftSelected===0 ? true : false}
                 >
-                    Staked
+                    Unstake
                 </button>
             } 
             {stakingTransactionStatus ? transactionSuccess() : <></>}

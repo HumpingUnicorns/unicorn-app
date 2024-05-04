@@ -5,4 +5,4 @@ export default class NftModel {
       this.tokenId = tokenId;
       this.favPosition = favPosition
     }
-  }
+}
