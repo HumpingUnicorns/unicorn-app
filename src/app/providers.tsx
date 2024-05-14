@@ -9,15 +9,21 @@ import { config } from '@/wagmi';
 import { CustomAvatar } from './Components/Custom/CustomAvatar.tsx';
 
 export function Providers(props: { children: ReactNode }) {
-  const queryClient = new QueryClient() 
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 60 * 1000,
+      }
+    }
+  });
 
   return (
     <WagmiProvider config={config}>
-          <QueryClientProvider client={queryClient} >
+      <QueryClientProvider client={queryClient} >
         <RainbowKitProvider avatar={CustomAvatar}>
-            {props.children}
+          {props.children}
         </RainbowKitProvider>
-        </QueryClientProvider>
+      </QueryClientProvider>
     </WagmiProvider>
   )
 }
