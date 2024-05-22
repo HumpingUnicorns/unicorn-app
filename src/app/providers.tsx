@@ -6,7 +6,7 @@ import { WagmiProvider } from 'wagmi'
 import '@rainbow-me/rainbowkit/styles.css';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { config } from '@/wagmi';
-import { CustomAvatar } from './Components/Custom/CustomAvatar.tsx';
+import { CustomAvatar } from './Components/Custom/CustomAvatar';
 
 export function Providers(props: { children: ReactNode }) {
   const queryClient = new QueryClient({

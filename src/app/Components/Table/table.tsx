@@ -4,6 +4,13 @@ import React, { useEffect, useState } from 'react';
 import NftComponent from "@/app/Components/Table/NftComponent/NftComponent";
 import NftFilledComponent from '@/app/Components/Table/NftComponent/NftFilledComponent';
 import TotalHumping from './DisplayComponent/TotalHumping';
+import NftModel from '../utils/Models/NftModel';
+
+interface NftFilled {
+    key: string; // Ou tout autre type approprié pour la clé
+    id: number;
+    image: string; // Ou tout autre type approprié pour l'image
+}
 
 export default function Table({nftData, stakedNftDataFromOwner, isSuccessNftStaked, isSuccess}: any) {
 
@@ -97,7 +104,7 @@ export default function Table({nftData, stakedNftDataFromOwner, isSuccessNftStak
                         <div className="grid content-center w-full">
                             <div className={`grid h-full grid-cols-pannel p-4 gap-4`}>
                                 {stakedNftDataFromOwner !== undefined && stakedNftDataFromOwner.length > 0 &&
-                                    stakedNftDataFromOwner.map((nft: any) => {
+                                    stakedNftDataFromOwner.map((nft: NftModel) => {
                                         return <NftComponent key={nft.id} id={nft.id} profileNft={nft.dataImage}
                                                              nftTokenId={nft.tokenId}
                                                              favPosition={nft.favPosition}
@@ -106,7 +113,7 @@ export default function Table({nftData, stakedNftDataFromOwner, isSuccessNftStak
                                                              isChange={isChange}/>
                                     })}
                                 {
-                                    nftStakedFilled.map(nft => {
+                                    nftStakedFilled.map((nft : NftFilled ) => {
                                         return (
                                             <NftFilledComponent key={nft.id} id={nft.id} image={nft.image}/>
                                         )
@@ -131,15 +138,15 @@ export default function Table({nftData, stakedNftDataFromOwner, isSuccessNftStak
                     <div className='border-4 rounded-lg md:rounded-3xl bg-[#6f84ef57]'>
                         <div className="grid content-center w-full">
                             <div className={`grid h-full grid-cols-pannel p-4 gap-4`}>
-                                {nftData.map((nft: any) => {
+                                {nftData.map((nft: NftModel) => {
                                     return <NftComponent key={nft.id} id={nft.id} 
                                     nftTokenId={nft.tokenId}
                                     profileNft={nft.dataImage} favPosition={nft.favPosition}
                                     handleAddTokenIdToList={handleAddTokenIdToList}
-                                    handleRemoveTokenIdToList={handleRemoveTokenIdToList} nft={nft} isChange={isChange} />
+                                    handleRemoveTokenIdToList={handleRemoveTokenIdToList} isChange={isChange} />
                                 })}
                                 {
-                                    nftFilled.map((nft: any) => {
+                                    nftFilled.map((nft: NftFilled) => {
                                         return (
                                             <NftFilledComponent key={nft.id} id={nft.id} image={nft.image} />
                                         )

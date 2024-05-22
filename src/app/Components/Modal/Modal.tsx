@@ -1,7 +1,12 @@
 'use client'
 import React, {useContext } from 'react';
- 
-const Modal = props => {
+interface ModalProps {
+  // Define the expected properties for the Modal component
+  content: React.ReactNode;
+  handleClose: () => void;
+}
+
+const Modal: React.FC<ModalProps> = props => {
   return (
     <div className="popup-box flex justify-center">
       <div className={`box flex-col`}>

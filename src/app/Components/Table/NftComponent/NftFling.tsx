@@ -1,9 +1,8 @@
 import React, { useContext, useState, useEffect, startTransition } from 'react';
 import { useAccount, useContractRead, useWriteContract } from "wagmi";
-import abi from "src/app/abi.json";
+import abi from "../../../abi.json";
 import Spinner from '../../Spinner/Spinner';
 import Link from "next/link";
-import { BasicModal } from "../../../Components/Modal/Modal";
 
 type NftFling = {
     userAddress: string,
@@ -26,7 +25,7 @@ export default function NftFlingComponent({ userAddress, id, image, favPosition,
                 // Appel de la fonction du contrat
                 await writeContract({ 
                     abi,
-                    address: process.env.NEXT_PUBLIC_HUMPING_STACKING_CONTRACT,
+                    address: process.env.NEXT_PUBLIC_HUMPING_STACKING_CONTRACT as `0x${string}`,
                     functionName: 'claimSwinger',
                 });
             } catch (error) {

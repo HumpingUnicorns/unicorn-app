@@ -6,8 +6,8 @@ interface NftComponentProps {
     profileNft: string; // Ou tout autre type approprié pour l'image
     nftTokenId: string; // Ou tout autre type approprié pour l'ID du token NFT
     favPosition: any; // Le type de cette propriété dépend de votre application
-    handleAddTokenIdToList: (tokenId: string) => void; // Le type de cette fonction dépend de votre application
-    handleRemoveTokenIdToList: (tokenId: string) => void; // Le type de cette fonction dépend de votre application
+    handleAddTokenIdToList: (tokenId: Number) => void; // Le type de cette fonction dépend de votre application
+    handleRemoveTokenIdToList: (tokenId: Number) => void; // Le type de cette fonction dépend de votre application
     isChange: boolean; // Ou tout autre type approprié pour l'état de changement
 }
 
@@ -21,9 +21,9 @@ export default function NftComponent({ id, profileNft, nftTokenId, favPosition, 
     function handleIsSelected(event:any){
         setIsSelected(!isSelected);
         if(!isSelected){
-            handleAddTokenIdToList(nftTokenId);            
+            handleAddTokenIdToList(parseInt(nftTokenId));            
         }else{
-            handleRemoveTokenIdToList(nftTokenId);
+            handleRemoveTokenIdToList(parseInt(nftTokenId));
         }
     }
 

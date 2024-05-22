@@ -6,7 +6,7 @@ import { getAllNfts } from "@/app/services/actions/getNfts";
 import Table from "@/app/Components/Table/table";
 import TableNoNft from "@/app/Components/Table/tableNoNft";
 import Spinner from "../Spinner/Spinner";
-import abi from "src/app/abi.json";
+import abi from "../../abi.json";
 import { getAllNftDataFromContract } from "../../services/actions/getAllNfts";
 import { getNftFlingDataFromContractApi } from "../../services/actions/getFlingNft";
 import NftFlingComponent from "../Table/NftComponent/NftFling";
@@ -16,7 +16,12 @@ import { getMamboNameApi } from "@/app/services/actions/getMamboName";
 import Modal from "../Modal/Modal";
 import RulesButton from "../utils/rules/RulesButton";
 import { QueryClient } from "react-query";
+import { BigNumber } from 'ethers';
 
+interface Attribute {
+    traitType: String;
+    value: any; // Type de la valeur dépendant de votre application
+}
 
 export default function NftPage() {
     const queryClient = new QueryClient()
@@ -36,7 +41,7 @@ export default function NftPage() {
     const { data: id, isSuccess: isSuccessNftStaked } =
         useContractRead({
             abi,
-            address: process.env.NEXT_PUBLIC_HUMPING_STACKING_CONTRACT,
+            address: process.env.NEXT_PUBLIC_HUMPING_STACKING_CONTRACT as `0x${string}`,
             functionName: 'getStakedIdsFromOwner',
             args: [
                 userAddress
@@ -46,21 +51,21 @@ export default function NftPage() {
     const { data: flingData, isSuccess } =
         useContractRead({
             abi,
-            address: process.env.NEXT_PUBLIC_HUMPING_STACKING_CONTRACT,
+            address: process.env.NEXT_PUBLIC_HUMPING_STACKING_CONTRACT as `0x${string}`,
             functionName: 'lastFling',
         });
 
     useEffect(() => {
-        if (isSuccess) {
-            const intIds = parseInt(flingData[0].toString()); // ou Number(bigInt) pour une conversion explicite
+        if (isSuccess && flingData) {
+            const intIds = parseInt(flingData.toString()); // ou Number(bigInt) pour une conversion explicite
             getNftFlingDataFromContract(flingData, intIds);
         }
     }, [flingData, isSuccess]);
 
     useEffect(() => {
         if (isSuccessNftStaked) {
-            if (id != undefined || id.length > 0) {
-                const intIds = id.map((bigInt: BigInt) => parseInt(bigInt.toString())); // ou Number(bigInt) pour une conversion explicite
+            if (id !== undefined && id !== null) {
+                const intIds = (id as BigInt[]).map((bigInt: BigInt) => bigInt.toString());
                 setNftIdFromContract(intIds);
             }
         }
@@ -80,7 +85,7 @@ export default function NftPage() {
                 if (result) {
                     //Get mamboName (null if not exist)
                     const mamboName = await getMamboNameApi(flingData[3]);
-                    const instance: NftFlingModel = new NftFlingModel(result.id, result.metadata.image, result.tokenId, result.metadata.attributes.find(attribute => attribute.traitType === "Favourite Position").value, flingData[3], flingData[4], mamboName);
+                    const instance: NftFlingModel = new NftFlingModel(result.id, result.metadata.image, result.tokenId, result.metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position")?.value , flingData[3], flingData[4], mamboName);
                     await setNftDataFling(instance);
                 }
             }
@@ -99,7 +104,7 @@ export default function NftPage() {
                 const res: NftModel[] = [];
                 if (result) {
                     for (let i = 0; i < result.length; i++) {
-                        const instance = new NftModel(result[i].id, result[i].metadata.image, result[i].tokenId, result[i].metadata.attributes.find(attribute => attribute.traitType === "Favourite Position").value);
+                        const instance = new NftModel(result[i].id, result[i].metadata.image, result[i].tokenId, result[i].metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position").value);
                         res.push(instance);
                     }
                 }
@@ -118,7 +123,7 @@ export default function NftPage() {
                 const res: NftModel[] = [];
                 if (result) {
                     for (let i = 0; i < result.length; i++) {
-                        const instance = new NftModel(result[i].id, result[i].metadata.image, result[i].tokenId, result[i].metadata.attributes.find(attribute => attribute.traitType === "Favourite Position").value);
+                        const instance = new NftModel(result[i].id, result[i].metadata.image, result[i].tokenId, result[i].metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position").value);
                         res.push(instance);
                     }
                 }

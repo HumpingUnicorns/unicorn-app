@@ -22,7 +22,7 @@ function App() {
             <div className='flex flex-col justify-center items-center'>
             <Image  width={200}
                     height={120}
-                    style={{display: 'flex', position: 'justify-center', marginBottom: '30px'}}
+                    style={{display: 'flex', justifyContent: 'center', marginBottom: '30px'}}
                     src="/humping_images/Hump_House.png"
                     alt="title"
                 />
