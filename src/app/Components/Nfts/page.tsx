@@ -76,7 +76,6 @@ export default function NftPage() {
     async function getNftFlingDataFromContract(flingData: any, nftIdFromContract: any) {
         try {
             startTransitionFling(async () => {
-                //const result = await getNftFlingDataFromContractApi(nftIdFromContract);
                 const result = await queryClient.fetchQuery('nftFling', () => getNftFlingDataFromContractApi(nftIdFromContract));
                 if (result) {
                     //Get mamboName (null if not exist)
@@ -97,7 +96,6 @@ export default function NftPage() {
         try {
             startTransitionNftData(async () => {
                 const result = await queryClient.fetchQuery('nfts', () => getAllNfts(userAddress as string));
-                //const result = await getAllNfts(userAddress as string);
                 const res: NftModel[] = [];
                 if (result) {
                     for (let i = 0; i < result.length; i++) {
@@ -116,7 +114,6 @@ export default function NftPage() {
     async function getNftDataFromContract(nftIdFromContract: any) {
         try {
             startTransitionNftDataFromContract(async () => {
-                //const result = await getAllNftDataFromContract(nftIdFromContract);
                 const result = await queryClient.fetchQuery('nftDataFromContract', () => getAllNftDataFromContract(nftIdFromContract));
                 const res: NftModel[] = [];
                 if (result) {
