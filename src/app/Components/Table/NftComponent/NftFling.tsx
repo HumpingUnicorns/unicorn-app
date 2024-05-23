@@ -45,7 +45,6 @@ export default function NftFlingComponent({ userAddress, id, image, favPosition,
                                 <span className='text-black bg-pink-300 rounded-xl text-center font-body font-text text-xs lg:text-sm xl:text-xs px-2 py-1 shadow-xl shadow-pink-800/50'>{favPosition}</span>
                             </div>
                         </div>                    
-                    
                     :
                     <div className='flex justify-center'>                    
                         <Spinner></Spinner>

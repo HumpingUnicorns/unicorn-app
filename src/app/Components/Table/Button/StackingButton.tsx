@@ -14,7 +14,7 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
     const { address: userAddress } = useAccount();
     const [styleButton, setStyle] = useState<Style>();
     const [isWriteEnabled, setIsWriteEnabled] = useState(false);
-    const [isSuccess, setIsSuccess] = useState(false);
+    const [stackingAvailable, setStackingAvailable] = useState(false);
 
     const { writeContract, data, error, status } = useWriteContract();
 
@@ -61,13 +61,21 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
       hash: data,
     });
 
-    useEffect(() => {
-        console.log(isConfirming);
+    useEffect(() => {  
+        console.log("confirmed....");
+        console.log(isConfirmed);
         
-        if (isConfirmed && isConfirming) {
-            setIsSuccess(true);
+        if (isConfirmed) {
+            console.log("confirmed!!");
+            transactionSuccess()
         }
       }, [isConfirming, isConfirmed]);
+
+      useEffect(() => {               
+        if (dataApprove.data?.[0].result===true || data) {            
+            setStackingAvailable(true);
+        }
+      }, [data, dataApprove]);
 
     useEffect(() => {
         if (nbNftSelected === 0) {
@@ -83,25 +91,16 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
         }
     }, [nbNftSelected]);
 
-    const handleStakeMany = async () => {
-        if(dataApprove.data){
-            if (dataApprove.data[0].result==="true") {
-                handleTransaction(nftSelected, 'stakeMany');
-            }else{
-                //Si le user n'a pas encore approve ses NFT 
-                    await writeContract({
-                        abi,
-                        address: process.env.NEXT_PUBLIC_HUMPING_CONTRACT_MAIN as `0x${string}`,
-                        functionName: 'setApprovalForAll',
-                        args: [
-                                process.env.NEXT_PUBLIC_HUMPING_STACKING_CONTRACT,
-                                true
-                            ],
-                    });    
-                    //handleTransaction(nftSelected, 'stakeMany');                
-                
-            } 
-        }   
+    const handleApproveAll = async () => {
+        await writeContract({
+            abi: abiNft,
+            address: process.env.NEXT_PUBLIC_HUMPING_CONTRACT_MAIN as `0x${string}`,
+            functionName: 'setApprovalForAll',
+            args: [
+                    process.env.NEXT_PUBLIC_HUMPING_STACKING_CONTRACT,
+                    true
+                ],
+        });    
     };
     
     const handleTransaction = async (listOfId: string[], functionName: string) => {
@@ -119,32 +118,40 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
         }
     };
 
-    
-
     const handleUnstakeMany = () => {
         handleTransaction(nftSelected, 'unstakeMany');
     };
 
+    const handleStakeMany = () => {
+        handleTransaction(nftSelected, 'stakeMany');
+    };
+
     return (
         <div className="flex flex-col justify-center">
-            {!isHumpingSelected ?
-                <button className="bg-[#414A78] p-2 border-2 border-solid border-white font-text text-4xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white"
+            {!stackingAvailable ?
+                <button className="bg-[#414A78] p-2 border-2 border-solid border-white font-text text-2xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white"
                     type="button"
-                    style={styleButton}
-                    onClick={handleStakeMany}
-                    disabled={nbNftSelected === 0 || isWriteEnabled}>
-                    Stake
+                    onClick={handleApproveAll}>
+                    Approve NFT
                 </button>
-                :
-                <button className="bg-[#414A78] p-2 border-2 border-solid border-white font-text text-4xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white"
-                    type="button"
-                    style={styleButton}
-                    onClick={handleUnstakeMany}
-                    disabled={nbNftSelected === 0 || isWriteEnabled}>
-                    Unstake
-                </button>
-            }
-            {isSuccess && transactionSuccess()}
+            :
+                !isHumpingSelected ?
+                    <button className="bg-[#414A78] p-2 border-2 border-solid border-white font-text text-4xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white"
+                        type="button"
+                        style={styleButton}
+                        onClick={handleStakeMany}
+                        disabled={nbNftSelected === 0 || isWriteEnabled}>
+                        Stake
+                    </button>
+                    :
+                    <button className="bg-[#414A78] p-2 border-2 border-solid border-white font-text text-4xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white"
+                        type="button"
+                        style={styleButton}
+                        onClick={handleUnstakeMany}
+                        disabled={nbNftSelected === 0 || isWriteEnabled}>
+                        Unstake
+                    </button>
+                }
         </div>
     );
 }

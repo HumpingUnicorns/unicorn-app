@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useWaitForTransactionReceipt } from 'wagmi';
-import { Hash } from '@wagmi/core'
+import { Hash } from 'viem'
 
 export default function useTransactionReceiptHook(data:Hash) {
     const [isTransactionReceipt, setIsTransactionReceipt] = useState(false);

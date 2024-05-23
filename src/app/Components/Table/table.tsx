@@ -49,8 +49,6 @@ export default function Table({nftData, stakedNftDataFromOwner, isSuccessNftStak
                     });
                 }
             setNftFilled(filledNfts);
-        }else{
-            setNftStakedFilled([]);
         }
         
     }, [nftData]);
@@ -68,8 +66,6 @@ export default function Table({nftData, stakedNftDataFromOwner, isSuccessNftStak
             }
             setNftStakedFilled(filledNfts);
             
-        }else{
-            setNftStakedFilled([]);
         }
     }, [stakedNftDataFromOwner]);
 
