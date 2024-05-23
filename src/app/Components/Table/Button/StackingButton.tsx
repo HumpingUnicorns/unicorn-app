@@ -43,6 +43,13 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
         });
     };
 
+    const transactionPending = () => {
+        Toast.fire({
+            icon: 'info',
+            title: 'Transaction receive'
+        });
+    };
+
     const dataApprove = useReadContracts({
         contracts: [{
             address: process.env.NEXT_PUBLIC_HUMPING_CONTRACT_MAIN as `0x${string}`,
@@ -61,12 +68,11 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
       hash: data,
     });
 
-    useEffect(() => {  
-        console.log("confirmed....");
-        console.log(isConfirmed);
-        
+    useEffect(() => {          
+        if(isConfirming){
+            transactionPending()
+        }
         if (isConfirmed) {
-            console.log("confirmed!!");
             transactionSuccess()
         }
       }, [isConfirming, isConfirmed]);
