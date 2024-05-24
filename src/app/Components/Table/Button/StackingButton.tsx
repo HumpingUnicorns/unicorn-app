@@ -1,9 +1,8 @@
-import { useAccount, useReadContracts, useSimulateContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
+import { useAccount, useReadContracts, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
 import abi from "../../../abi.json";
 import abiNft from "../../../abiNft.json";
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
-import useTransactionReceiptHook from './useTransactionReceiptHook';
 
 interface Style {
     cursor: string;

@@ -4,8 +4,6 @@ import Navigation from './Components/Navbar/Navigation';
 import Image from '../../node_modules/next/image';
 import NftPage from "@/app/Components/Nfts/page";
 import {useAccount, useChains} from "wagmi";
-import NftFilledComponent from './Components/Table/NftComponent/NftFilledComponent';
-import { useState } from 'react';
 
 function App() {
     // Handle the case where the user is not connected

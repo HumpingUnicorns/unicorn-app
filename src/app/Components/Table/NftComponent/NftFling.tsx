@@ -1,8 +1,7 @@
-import React, { useContext, useState, useEffect, startTransition } from 'react';
-import { useAccount, useContractRead, useWriteContract } from "wagmi";
+import React, { useState } from 'react';
+import { useWriteContract } from 'wagmi';
 import abi from "../../../abi.json";
 import Spinner from '../../Spinner/Spinner';
-import Link from "next/link";
 
 type NftFling = {
     userAddress: string,

@@ -1,5 +1,5 @@
-import { http, createConfig, cookieStorage, createStorage } from 'wagmi'
-import { avalanche, avalancheFuji} from 'wagmi/chains'
+import { http, createConfig } from 'wagmi'
+import { avalanche } from 'wagmi/chains'
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   metaMaskWallet,

@@ -2,9 +2,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { type ReactNode } from 'react'
-import Navigation from './Components/Navbar/Navigation';
-
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import { Providers } from './providers'
 

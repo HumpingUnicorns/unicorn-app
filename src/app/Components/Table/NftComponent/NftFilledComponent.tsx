@@ -1,5 +1,3 @@
-import React, { useContext, useState } from 'react';
-
 type NftFilled = {
     id: number,
     image:string

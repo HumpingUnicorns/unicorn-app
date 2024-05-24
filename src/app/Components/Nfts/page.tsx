@@ -13,10 +13,8 @@ import NftFlingComponent from "../Table/NftComponent/NftFling";
 import NftModel from "../utils/Models/NftModel";
 import NftFlingModel from "../utils/Models/NftFlingModel";
 import { getMamboNameApi } from "@/app/services/actions/getMamboName";
-import Modal from "../Modal/Modal";
 import RulesButton from "../utils/rules/RulesButton";
 import { QueryClient } from "react-query";
-import { BigNumber } from 'ethers';
 
 interface Attribute {
     traitType: String;
