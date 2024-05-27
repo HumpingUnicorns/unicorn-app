@@ -25,12 +25,12 @@
 
 @font-face {
   font-family: "Patrick";
-  src: url("../../public/fonts/PatrickHand-Regular.ttf");
+  src: url("/fonts/PatrickHand-Regular.ttf");
 }
 
 @font-face {
   font-family: "Meera";
-  src: url("../../public/fonts/MeeraInimai-Regular.ttf");
+  src: url("/fonts/MeeraInimai-Regular.ttf");
 }
 
 
