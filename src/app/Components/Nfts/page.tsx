@@ -143,7 +143,7 @@ export default function NftPage() {
                         <div className='flex justify-center place-content-start md:col-start-2 md:col-end-5'>
                             <Table nftData={nftData} stakedNftDataFromOwner={nftDataFromContract} isSuccessNftStaked={isSuccessNftStaked} isSuccess={isSuccess} />
                         </div>
-                        <div className='flex flex-col gap-2 justify-center place-items-center md:col-start-5 md:col-end-7'>
+                        <div className='flex flex-col gap-2 justify-start place-items-center md:col-start-5 md:col-end-7'>
                             <div className='flex justify-center place-content-center w-8/12 rounded-3xl border-4 bg-[#6f84ef57]'>
                                 <div className='flex-col w-full '>
                                     <span className='flex justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] font-text text-4xl my-6'>LAST FLING</span>

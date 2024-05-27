@@ -1,11 +1,26 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Patrick_Hand, Meera_Inimai} from 'next/font/google'
 import { type ReactNode } from 'react'
 
 import { Providers } from './providers'
 
 const inter = Inter({ subsets: ['latin'] })
+
+const patrick_hand = Patrick_Hand({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: '400',
+  variable: '--font-patrick-hand',
+});
+
+const meera_inimai = Meera_Inimai({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: '400',
+  variable: '--font-meera-inimai',
+});
+
 
 export const metadata: Metadata = {
   title: 'Create Wagmi',
@@ -14,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout(props: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${patrick_hand.variable} ${meera_inimai.variable}`}>
       <body >
       <div style={{
                 zIndex: -1,

@@ -23,25 +23,6 @@
   }
 }
 
-@font-face {
-  font-family: "Patrick";
-  src: url("/fonts/PatrickHand-Regular.ttf");
-}
-
-@font-face {
-  font-family: "Meera";
-  src: url("/fonts/MeeraInimai-Regular.ttf");
-}
-
-
-.font-text {
-  font-family: 'Patrick', sans-serif;
-}
-
-.font-body {
-  font-family: 'Meera', sans-serif;
-}
-
 @media screen and (min-width: 568px) {
   .grid-cols-pannel {
     grid-template-columns: repeat(4, minmax(0, 1fr));

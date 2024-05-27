@@ -24,7 +24,12 @@ module.exports = {
       '8xl': '6rem',
       '9xl': '8rem'
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        body: ['var(--font-meera-inimai)'],
+        text: ['var(--font-patrick-hand)'],
+      },
+    },
   },
   plugins: [],
 }

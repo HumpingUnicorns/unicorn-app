@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const allowedOrigins = ['https://api.joepegs.dev/', 'http://localhost:3000', 'http://127.0.0.1:3000', 'https://unicorn-app-ten.vercel.app/'];
+const allowedOrigins = ['https://api.joepegs.dev/', 'http://localhost:3000', 'http://127.0.0.1:3000', 'https://unicorn-app-ten.vercel.app'];
 
 // This middleware will only allow requests from the specified origins
 export function middleware(request: Request) {
