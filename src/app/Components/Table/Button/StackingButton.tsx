@@ -141,20 +141,21 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
                 </button>
             :
                 !isHumpingSelected ?
-                    <button className="bg-[#414A78] p-2 border-2 border-solid border-white font-text text-4xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white"
+                    <button className="bg-[#414A78] p-2 border-2 border-solid border-white text-[#f3f3f3] font-text text-4xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white"
                         type="button"
                         style={styleButton}
                         onClick={handleStakeMany}
                         disabled={nbNftSelected === 0 || isWriteEnabled}>
-                        Stake
+                        STAKE
                     </button>
                     :
-                    <button className="bg-[#414A78] p-2 border-2 border-solid border-white font-text text-4xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white"
+                    <button className="bg-[#414A78] p-2 border-2 border-solid border-white text-[#f3f3f3] font-text text-4xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white"
                         type="button"
                         style={styleButton}
                         onClick={handleUnstakeMany}
                         disabled={nbNftSelected === 0 || isWriteEnabled}>
-                        Unstake
+                        UNSTAKE<br />
+                        <span className="text-3xl">(pull out)</span>
                     </button>
                 }
         </div>

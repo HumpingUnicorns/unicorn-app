@@ -12,7 +12,7 @@ export default function RulesButton(){
     return(
         <div>
 
-        <button className='bg-[#414A78] p-2 border-2 border-solid border-white font-text text-2xl rounded-2xl hover:bg-pink-300 shadow-2xl'
+        <button className='bg-[#414A78] p-2 border-2 border-solid border-white text-[#f3f3f3] font-text text-2xl rounded-2xl hover:bg-pink-300 shadow-2xl'
                 type="button"
                 onClick={toggleShowRulesUnicorn}
                 >

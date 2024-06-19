@@ -41,7 +41,7 @@ export default function NftFlingComponent({ userAddress, id, image, favPosition,
                             <img alt="nftImg" src={image} className="w-full h-auto"/>
                             <hr className='w-full bg-white'></hr>
                             <div className='p-4'>
-                                <span className='text-black bg-pink-300 rounded-xl text-center font-body font-text text-xs lg:text-sm xl:text-xs px-2 py-1 shadow-xl shadow-pink-800/50'>{favPosition}</span>
+                                <span className='text-black bg-pink-300 rounded-xl text-center font-body font-text text-xl lg:text-xl xl:text-xl px-2 py-1 shadow-xl shadow-pink-800/50'>{favPosition}</span>
                             </div>
                         </div>                    
                     :
@@ -56,27 +56,27 @@ export default function NftFlingComponent({ userAddress, id, image, favPosition,
             flingWinner === userAddress ?
                 isClaimed===false ?
                     <div className='flex justify-center mt-6'>
-                        <p>You're bringing home a friend !</p>
-                        <button className='bg-[#414A78] p-2 border-2 border-solid border-white text-xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white mb-4'
+                        <p>You're bringing home a friend!</p>
+                        <button className='bg-[#414A78] p-2 border-2 border-solid border-white text-xl text-[#f3f3f3] rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white mb-4'
                         type="button"
                         onClick={(e)=>claimNft(e)}>
-                        CLAIM !
+                        CLAIM!
                     </button>
                     </div>
                     
                 :
-                    <button className='bg-[#414A78] p-2 border-2 border-solid border-white text-xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white mb-4'
+                    <button className='bg-[#414A78] p-2 border-2 border-solid border-white text-[#f3f3f3] text-xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white mb-4'
                      type="button"
                      disabled
                      style={{cursor: "not-allowed"}}>
-                     Already Claimed !
+                     Already Claimed!
                     </button>
             :
                     mamboName ?
-                        <p className='font-body font-black italic'>Going home with : <span>{mamboName}</span></p>
+                        <p className='font-body text-[#f3f3f3] font-black italic '>Going home with: <span>{mamboName}</span></p>
                     :
                         flingWinner ?
-                            <p className='font-body font-black italic'>Going home with : <span>{flingWinner.slice(0, 3)} ... {flingWinner.slice(flingWinner.length-3, flingWinner.length)}</span></p>
+                            <p className='font-body text-[#f3f3f3] font-black italic'>Going home with: <span>{flingWinner.slice(0, 3)} ... {flingWinner.slice(flingWinner.length-3, flingWinner.length)}</span></p>
                         :
                             <div></div>
             }

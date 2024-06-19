@@ -43,7 +43,7 @@ export const CustomButton = () => {
               if (!connected) {
                 return (
                   <div className=''>
-                    <button className='bg-[#414A78] p-2 border-2 font-text border-solid border-white rounded-2xl hover:bg-pink-300 shadow-2xl shadow-blue-800/50' onClick={openConnectModal} type="button" style={{ boxShadow: "0 0.15rem 0 0 rgba(255, 255, 255, 0.2)" }}>
+                    <button className='bg-[#414A78] p-2 border-2 font-text text-[#f3f3f3] border-solid border-white rounded-2xl hover:bg-pink-300 shadow-2xl shadow-blue-800/50' onClick={openConnectModal} type="button" style={{ boxShadow: "0 0.15rem 0 0 rgba(255, 255, 255, 0.2)" }}>
                       Connect Wallet
                     </button>
                   </div>
