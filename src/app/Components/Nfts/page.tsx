@@ -147,7 +147,7 @@ export default function NftPage() {
                             <div className='flex justify-center place-content-center w-8/12 rounded-3xl border-4 bg-[#6f84ef57]'>
                                 <div className='flex-col w-full '>
                                     <span className='flex justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] font-text text-[#f3f3f3] text-4xl my-6'>LAST FLING</span>
-                                    <NftFlingComponent userAddress={userAddress} key={nftDataFling?.id} id={nftDataFling?.id} image={nftDataFling?.dataImage} favPosition={nftDataFling?.favPosition} flingWinner={nftDataFling?.flingWinner} isClaimed={nftDataFling?.isClaimed} mamboName={nftDataFling?.mamboName[0]} />
+                                    <NftFlingComponent userAddress={userAddress} key={nftDataFling?.id} id={nftDataFling?.id} image={nftDataFling?.dataImage} favPosition={nftDataFling?.favPosition} flingWinner={nftDataFling?.flingWinner} isClaimed={nftDataFling?.isClaimed} mamboName={nftDataFling?.mamboName} />
                                 </div>
 
                             </div>
