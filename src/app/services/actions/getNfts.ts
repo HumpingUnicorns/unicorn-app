@@ -17,6 +17,8 @@ export async function getAllNfts(userAddress: string) {
         throw new Error('Failed to fetch data')
     }
 
-    return await result.json();
+    const data = await result.json();
+    data.awsImage = `${process.env.AWS_DATA_ENDPOINT}${data.id}.png`
+    return data;
 
 }

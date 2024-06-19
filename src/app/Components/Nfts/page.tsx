@@ -83,7 +83,7 @@ export default function NftPage() {
                 if (result) {
                     //Get mamboName (null if not exist)
                     const mamboName = await getMamboNameApi(flingData[3]);
-                    const instance: NftFlingModel = new NftFlingModel(result.id, result.metadata.image, result.tokenId, result.metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position")?.value , flingData[3], flingData[4], mamboName);
+                    const instance: NftFlingModel = new NftFlingModel(result.id, result.awsImage, result.tokenId, result.metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position")?.value , flingData[3], flingData[4], mamboName);
                     await setNftDataFling(instance);
                 }
             }
@@ -102,7 +102,7 @@ export default function NftPage() {
                 const res: NftModel[] = [];
                 if (result) {
                     for (let i = 0; i < result.length; i++) {
-                        const instance = new NftModel(result[i].id, result[i].metadata.image, result[i].tokenId, result[i].metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position").value);
+                        const instance = new NftModel(result[i].id, result[i].awsImage, result[i].tokenId, result[i].metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position").value);
                         res.push(instance);
                     }
                 }
@@ -121,7 +121,7 @@ export default function NftPage() {
                 const res: NftModel[] = [];
                 if (result) {
                     for (let i = 0; i < result.length; i++) {
-                        const instance = new NftModel(result[i].id, result[i].metadata.image, result[i].tokenId, result[i].metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position").value);
+                        const instance = new NftModel(result[i].id, result[i].awsImage, result[i].tokenId, result[i].metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position").value);
                         res.push(instance);
                     }
                 }

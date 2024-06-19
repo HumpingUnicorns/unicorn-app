@@ -14,6 +14,7 @@ export async function getNftFlingDataFromContractApi(nftIdFromContract: string) 
             }
 
             const data = await response.json(); // Récupération des données JSON
+            data.awsImage = `${process.env.AWS_DATA_ENDPOINT}${data.tokenId}.png`
             return data; // Renvoie le tableau de données récupérées
         } catch (error) {
             console.error('Error fetching data:', error);
