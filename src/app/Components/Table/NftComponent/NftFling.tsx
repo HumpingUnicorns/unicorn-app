@@ -7,13 +7,14 @@ type NftFling = {
     userAddress: string,
     id:number,
     image:string,
+    name:string,
     favPosition: string,
     flingWinner: string,
     isClaimed: boolean,
     mamboName: string
 }
 
-export default function NftFlingComponent({ userAddress, id, image, favPosition, flingWinner, isClaimed, mamboName } : NftFling){
+export default function NftFlingComponent({ userAddress, id, image, name, favPosition, flingWinner, isClaimed, mamboName } : NftFling){
     
     const { writeContract } = useWriteContract();
     const [error, setError] = useState<any>(null);
@@ -41,7 +42,7 @@ export default function NftFlingComponent({ userAddress, id, image, favPosition,
                             <img alt="nftImg" src={image} className="w-full h-auto"/>
                             <hr className='w-full bg-white'></hr>
                             <div className="w-full flex justify-center items-center text-white font-bold font-text text-xl mb-0.5">
-                                Overlay Text
+                                {name}
                             </div>
                             <div className='p-4'>
                                 <span className='text-black bg-pink-300 rounded-xl text-center font-body text-m lg:text-m xl:text-l px-2 py-1 shadow-xl shadow-pink-800/50'>{favPosition}</span>

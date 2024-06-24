@@ -5,13 +5,14 @@ interface NftComponentProps {
     id: string;
     profileNft: string; // Ou tout autre type approprié pour l'image
     nftTokenId: string; // Ou tout autre type approprié pour l'ID du token NFT
+    name: string // French french it's the name
     favPosition: any; // Le type de cette propriété dépend de votre application
     handleAddTokenIdToList: (tokenId: Number) => void; // Le type de cette fonction dépend de votre application
     handleRemoveTokenIdToList: (tokenId: Number) => void; // Le type de cette fonction dépend de votre application
     isChange: boolean; // Ou tout autre type approprié pour l'état de changement
 }
 
-export default function NftComponent({ id, profileNft, nftTokenId, favPosition, handleAddTokenIdToList, handleRemoveTokenIdToList, isChange }: NftComponentProps){
+export default function NftComponent({ id, profileNft, nftTokenId, name, favPosition, handleAddTokenIdToList, handleRemoveTokenIdToList, isChange }: NftComponentProps){
     const [isSelected, setIsSelected] = useState<boolean>(false);
 
     useEffect(() => {
@@ -37,7 +38,7 @@ export default function NftComponent({ id, profileNft, nftTokenId, favPosition, 
         <img alt="nftImg" src={profileNft} className="w-full h-auto"/>
         <hr className='w-full bg-white'></hr>
         <div className="w-full flex justify-center items-center text-white font-bold font-text text-xl mb-0.5">
-          Overlay Text
+          {name}
         </div>
         <div className='mt-4 mb-4 w-full'>
           <span className='w-full text-black bg-pink-300 rounded-xl text-center font-body lg:text-sm sm:text-sm md:text-xxs px-2 p-1 shadow-xl shadow-pink-800/50'>{favPosition}</span>
@@ -52,7 +53,7 @@ export default function NftComponent({ id, profileNft, nftTokenId, favPosition, 
         <img alt="nftImg" src={profileNft} className="w-full h-auto"/>
         <hr className='w-full bg-white'></hr>
         <div className="w-full flex justify-center items-center text-white font-bold font-text text-xl mb-0.5">
-          Overlay Text
+          {name}
         </div>
         <div className='mt-4 mb-4 w-full'>
           <span className='w-full bg-pink-300 text-black rounded-xl text-center font-body md:text-xxs lg:text-xs sm:text-xs p-1 shadow-xl shadow-pink-800/50'>{favPosition}</span>

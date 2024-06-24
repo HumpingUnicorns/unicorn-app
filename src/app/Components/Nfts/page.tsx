@@ -83,7 +83,7 @@ export default function NftPage() {
                 if (result) {
                     //Get mamboName (null if not exist)
                     const mamboName = await getMamboNameApi(flingData[3]);
-                    const instance: NftFlingModel = new NftFlingModel(result.id, result.awsImage, result.tokenId, result.metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position")?.value , flingData[3], flingData[4], mamboName);
+                    const instance: NftFlingModel = new NftFlingModel(result.id, result.awsImage, result.tokenId, result.metadata.name, result.metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position")?.value , flingData[3], flingData[4], mamboName);
                     await setNftDataFling(instance);
                 }
             }
@@ -102,7 +102,7 @@ export default function NftPage() {
                 const res: NftModel[] = [];
                 if (result) {
                     for (let i = 0; i < result.length; i++) {
-                        const instance = new NftModel(result[i].id, result[i].awsImage, result[i].tokenId, result[i].metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position").value);
+                        const instance = new NftModel(result[i].id, result[i].awsImage, result[i].tokenId, result[i].metadata.name, result[i].metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position").value);
                         res.push(instance);
                     }
                 }
@@ -121,7 +121,7 @@ export default function NftPage() {
                 const res: NftModel[] = [];
                 if (result) {
                     for (let i = 0; i < result.length; i++) {
-                        const instance = new NftModel(result[i].id, result[i].awsImage, result[i].tokenId, result[i].metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position").value);
+                        const instance = new NftModel(result[i].id, result[i].awsImage, result[i].tokenId, result[i].metadata.name, result[i].metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position").value);
                         res.push(instance);
                     }
                 }
@@ -147,7 +147,7 @@ export default function NftPage() {
                             <div className='flex justify-center place-content-center w-8/12 rounded-3xl border-4 bg-[#6f84ef57]'>
                                 <div className='flex-col w-full '>
                                     <span className='flex justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] font-text text-[#f3f3f3] text-4xl my-6'>LAST FLING</span>
-                                    <NftFlingComponent userAddress={userAddress} key={nftDataFling?.id} id={nftDataFling?.id} image={nftDataFling?.dataImage} favPosition={nftDataFling?.favPosition} flingWinner={nftDataFling?.flingWinner} isClaimed={nftDataFling?.isClaimed} mamboName={nftDataFling?.mamboName} />
+                                    <NftFlingComponent userAddress={userAddress} key={nftDataFling?.id} id={nftDataFling?.id} image={nftDataFling?.dataImage} name={nftDataFling?.name} favPosition={nftDataFling?.favPosition} flingWinner={nftDataFling?.flingWinner} isClaimed={nftDataFling?.isClaimed} mamboName={nftDataFling?.mamboName} />
                                 </div>
 
                             </div>

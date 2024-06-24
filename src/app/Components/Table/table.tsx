@@ -103,6 +103,7 @@ export default function Table({nftData, stakedNftDataFromOwner, isSuccessNftStak
                                         return <NftComponent key={nft.id} id={nft.id} profileNft={nft.dataImage}
                                                              nftTokenId={nft.tokenId}
                                                              favPosition={nft.favPosition}
+                                                             name={nft.name}
                                                              handleAddTokenIdToList={handleAddTokenIdToList}
                                                              handleRemoveTokenIdToList={handleRemoveTokenIdToList}
                                                              isChange={isChange}/>
@@ -136,7 +137,9 @@ export default function Table({nftData, stakedNftDataFromOwner, isSuccessNftStak
                                 {nftData.map((nft: NftModel) => {
                                     return <NftComponent key={nft.id} id={nft.id} 
                                     nftTokenId={nft.tokenId}
-                                    profileNft={nft.dataImage} favPosition={nft.favPosition}
+                                    profileNft={nft.dataImage} 
+                                    name={nft.name}
+                                    favPosition={nft.favPosition}
                                     handleAddTokenIdToList={handleAddTokenIdToList}
                                     handleRemoveTokenIdToList={handleRemoveTokenIdToList} isChange={isChange} />
                                 })}
