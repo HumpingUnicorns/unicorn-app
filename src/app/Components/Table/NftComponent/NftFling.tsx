@@ -44,8 +44,9 @@ export default function NftFlingComponent({ userAddress, id, image, name, favPos
                             <div className="w-full flex justify-center items-center text-white font-bold font-text text-xl mb-0.5">
                                 {name}
                             </div>
-                            <div className='p-4'>
-                                <span className='text-black bg-pink-300 rounded-xl text-center font-body text-m lg:text-m xl:text-l px-2 py-1 shadow-xl shadow-pink-800/50'>{favPosition}</span>
+                            <div className='p-2'>
+                                <span className='text-white text-center font-body text-m lg:text-m xl:text-l'style={{ borderTop: '2px solid white', borderBottom: '2px solid white', display: 'block', padding: '8px 0' }}>FAVE POSITION:<br />
+                                {favPosition}</span>
                             </div>
                         </div>                    
                     :
