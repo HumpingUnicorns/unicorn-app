@@ -18,7 +18,7 @@ export async function getAllNfts(userAddress: string) {
     }
 
     const data = await result.json();
-    data.forEach(item => {
+    data.forEach((item: { tokenId: string; awsImage?: string }) => {
         item.awsImage = `${process.env.AWS_DATA_ENDPOINT}${item.tokenId}.png`;
     });
     
