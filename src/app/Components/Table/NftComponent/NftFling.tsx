@@ -34,14 +34,17 @@ export default function NftFlingComponent({ userAddress, id, image, favPosition,
 
     return(
         <div className={`w-3/4 mx-auto`}>
-            <div className='w-full h-full overflow-hidden bg-[#6e7cc4b1] border-2 border-white'>
+            <div className='w-full h-full overflow-hidden bg-[#6e7cc4b1] border-2 border-white rounded-xl'>
                     {image ?
                    
                         <div className='w-full  h-full flex flex-col justify-center items-center '>
                             <img alt="nftImg" src={image} className="w-full h-auto"/>
                             <hr className='w-full bg-white'></hr>
+                            <div className="w-full flex justify-center items-center text-white font-bold font-text text-xl mb-0.5">
+                                Overlay Text
+                            </div>
                             <div className='p-4'>
-                                <span className='text-black bg-pink-300 rounded-xl text-center font-body font-text text-xl lg:text-xl xl:text-xl px-2 py-1 shadow-xl shadow-pink-800/50'>{favPosition}</span>
+                                <span className='text-black bg-pink-300 rounded-xl text-center font-body text-m lg:text-m xl:text-l px-2 py-1 shadow-xl shadow-pink-800/50'>{favPosition}</span>
                             </div>
                         </div>                    
                     :
@@ -73,10 +76,10 @@ export default function NftFlingComponent({ userAddress, id, image, favPosition,
                     </button>
             :
                     mamboName ?
-                        <p className='font-body text-[#f3f3f3] font-black italic '>Going home with: <span>{mamboName}</span></p>
+                        <p className='font-body text-[#f3f3f3] font-black italic text-center'>Going home with: <span>{mamboName}</span></p>
                     :
                         flingWinner ?
-                            <p className='font-body text-[#f3f3f3] font-black italic'>Going home with: <span>{flingWinner.slice(0, 3)} ... {flingWinner.slice(flingWinner.length-3, flingWinner.length)}</span></p>
+                            <p className='font-body text-[#f3f3f3] font-black italic text-center'>Going home with: <span>{flingWinner.slice(0, 3)} ... {flingWinner.slice(flingWinner.length-3, flingWinner.length)}</span></p>
                         :
                             <div></div>
             }

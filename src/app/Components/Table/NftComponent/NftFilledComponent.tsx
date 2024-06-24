@@ -5,7 +5,7 @@ type NftFilled = {
 export default function NftFilledComponent({ id,image } : NftFilled){
     return(
         <div className={` w-full h-full `}>
-        <div className='w-full h-full overflow-hidden bg-[#6e7cc4b1] border-2 border-white'>
+        <div className='w-full h-full overflow-hidden bg-[#6e7cc4b1] border-2 border-white rounded-xl'>
             <div className=' w-full  h-full flex flex-col justify-start items-center '>
         
             <img alt="nftImg" src={image} className="w-full h-auto	"/>

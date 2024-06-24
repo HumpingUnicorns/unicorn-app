@@ -29,38 +29,40 @@ export default function NftComponent({ id, profileNft, nftTokenId, favPosition, 
 
     return(
         <button onClick={event => handleIsSelected(event)} >
-            {
-            !isSelected ?
-            <div className={` w-full h-full `}>
-                <div className='w-full h-full overflow-hidden bg-[#6e7cc4b1] border-2 border-white'>
-                    <div className=' w-full  h-full flex flex-col justify-start items-center '>
-                
-                    <img alt="nftImg" src={profileNft} className="w-full h-auto"/>
-                    <hr className='w-full bg-white'></hr>
-                    <div className='mt-4 mb-4 w-full'>
-                        <span className='w-full text-black bg-pink-300 rounded-xl text-center font-body font-text lg:text-sm sm:text-sm md:text-xxs px-2 p-1  shadow-xl shadow-pink-800/50'>{favPosition}</span>
-                    </div>
-                    </div>
-                </div>               
-            </div> 
-            :
-            <div className={` w-full h-full opacity-30`}>
-                <div className='w-full h-full overflow-hidden bg-[#6e7cc4b1] border-2 border-white'>
-                    <div className=' w-full  h-full flex flex-col justify-start items-center '>
-                
-                    <img alt="nftImg" src={profileNft} className="w-full h-auto"/>
-                    <hr className='w-full bg-white'></hr>
-                    <div className='mt-4 mb-4 w-full'>
-                        <span className='w-full bg-pink-300 text-black rounded-xl text-center font-body md:text-xxs lg:text-xs sm:text-xs p-1  shadow-xl shadow-pink-800/50'>{favPosition}</span>
-                    </div>
-                    </div>
-                </div>               
-            </div> 
-            }
-             
-           
-              
-        </button>
+  {
+  !isSelected ?
+  <div className={`w-full h-full relative`}>
+    <div className='w-full h-full overflow-hidden bg-[#6e7cc4b1] border-2 border-white rounded-xl'>
+      <div className='w-full h-full flex flex-col justify-start items-center relative'>
+        <img alt="nftImg" src={profileNft} className="w-full h-auto"/>
+        <hr className='w-full bg-white'></hr>
+        <div className="w-full flex justify-center items-center text-white font-bold font-text text-xl mb-0.5">
+          Overlay Text
+        </div>
+        <div className='mt-4 mb-4 w-full'>
+          <span className='w-full text-black bg-pink-300 rounded-xl text-center font-body lg:text-sm sm:text-sm md:text-xxs px-2 p-1 shadow-xl shadow-pink-800/50'>{favPosition}</span>
+        </div>
+      </div>
+    </div>
+  </div> 
+  :
+  <div className={`w-full h-full relative opacity-30`}>
+    <div className='w-full h-full overflow-hidden bg-[#6e7cc4b1] border-2 border-white rounded-xl'>
+      <div className='w-full h-full flex flex-col justify-start items-center relative'>
+        <img alt="nftImg" src={profileNft} className="w-full h-auto"/>
+        <hr className='w-full bg-white'></hr>
+        <div className="w-full flex justify-center items-center text-white font-bold font-text text-xl mb-0.5">
+          Overlay Text
+        </div>
+        <div className='mt-4 mb-4 w-full'>
+          <span className='w-full bg-pink-300 text-black rounded-xl text-center font-body md:text-xxs lg:text-xs sm:text-xs p-1 shadow-xl shadow-pink-800/50'>{favPosition}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</button>
+
         
     );
 }
