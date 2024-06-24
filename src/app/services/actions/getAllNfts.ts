@@ -17,7 +17,6 @@ export async function getAllNftDataFromContract(nftIdFromContract: String[]) {
             }
 
             const data = await response.json(); // Récupération des données JSON
-            console.log(data.tokenId);
             data.awsImage = `${process.env.AWS_DATA_ENDPOINT}${data.tokenId}.png`
             result.push(data); // Ajout des données dans le tableau result
         } catch (error) {

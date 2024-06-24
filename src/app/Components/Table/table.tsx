@@ -13,7 +13,6 @@ interface NftFilled {
 }
 
 export default function Table({nftData, stakedNftDataFromOwner, isSuccessNftStaked, isSuccess}: any) {
-
     const [isChange, setIsChange] = useState(false);
     const [nftSelected, setNftSelected] = useState<any>([]);
     const [nbNftSelected, setNbNftSelected] = useState<any>(0);
