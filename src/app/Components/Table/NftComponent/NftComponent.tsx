@@ -37,11 +37,11 @@ export default function NftComponent({ id, profileNft, nftTokenId, name, favPosi
       <div className='w-full h-full flex flex-col justify-start items-center relative'>
         <img alt="nftImg" src={profileNft} className="w-full h-auto"/>
         <hr className='w-full bg-white'></hr>
-        <div className="w-full flex justify-center items-center text-white font-bold font-text text-xl mb-0.5">
+        <div className="w-full flex justify-center items-center text-white font-bold font-text text-xl ">
           {name}
         </div>
-        <div className='mt-4 mb-4 w-full'>
-          <span className='w-full text-black bg-pink-300 rounded-xl text-center font-body lg:text-sm sm:text-sm md:text-xxs px-2 p-1 shadow-xl shadow-pink-800/50'>{favPosition}</span>
+        <div className='mt-1 mb-4 w-full'>
+          <span className='w-full text-white text-center font-body lg:text-sm sm:text-sm md:text-xxs px-2 p-'style={{ borderTop: '0.5px solid white', borderBottom: '0.5px solid white', display: 'block', padding: '8px 0' }}>{favPosition}</span>
         </div>
       </div>
     </div>
@@ -52,11 +52,11 @@ export default function NftComponent({ id, profileNft, nftTokenId, name, favPosi
       <div className='w-full h-full flex flex-col justify-start items-center relative'>
         <img alt="nftImg" src={profileNft} className="w-full h-auto"/>
         <hr className='w-full bg-white'></hr>
-        <div className="w-full flex justify-center items-center text-white font-bold font-text text-xl mb-0.5">
+        <div className="w-full flex justify-center items-center text-white font-bold font-text text-xl ">
           {name}
         </div>
-        <div className='mt-4 mb-4 w-full'>
-          <span className='w-full bg-pink-300 text-black rounded-xl text-center font-body md:text-xxs lg:text-xs sm:text-xs p-1 shadow-xl shadow-pink-800/50'>{favPosition}</span>
+        <div className='mt-1 mb-4 w-full'>
+        <span className='w-full text-white text-center font-body lg:text-sm sm:text-sm md:text-xxs px-2 p-'style={{ borderTop: '0.5px solid white', borderBottom: '0.5px solid white', display: 'block', padding: '8px 0' }}>{favPosition}</span>
         </div>
       </div>
     </div>
