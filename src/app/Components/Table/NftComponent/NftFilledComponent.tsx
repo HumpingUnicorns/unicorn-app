@@ -11,7 +11,7 @@ export default function NftFilledComponent({ id,image } : NftFilled){
             <img alt="nftImg" src={image} className="w-full h-auto	"/>
             <hr className='w-full bg-white'></hr>
             <div className='mt-4 mb-4'>
-                <span className='w-full text-white text-center font-text lg:text-sm sm:text-sm px-4' style={{ borderTop: '0.5px solid white', borderBottom: '0.5px solid white', display: 'block', padding: '8px 0' }}>FAVE POSITION: ?</span>
+                <span className='w-full text-pink-200 text-center font-text lg:text-sm sm:text-sm px-4' style={{ borderTop: '0.5px solid white', borderBottom: '0.5px solid white', display: 'block', padding: '8px 0' }}>FAVE POSITION: ?</span>
             </div>
             </div>
         </div>               
