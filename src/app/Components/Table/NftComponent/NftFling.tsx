@@ -41,11 +41,11 @@ export default function NftFlingComponent({ userAddress, id, image, name, favPos
                         <div className='w-full  h-full flex flex-col justify-center items-center '>
                             <img alt="nftImg" src={image} className="w-full h-auto"/>
                             <hr className='w-full bg-white'></hr>
-                            <div className="w-full flex justify-center items-center text-white font-bold font-text text-xl mb-0.5">
+                            <div className="w-full flex justify-center items-center text-white font-bold font-text text-xl mt-1 mb-0.5">
                                 {name}
                             </div>
                             <div className='p-2'>
-                                <span className='text-white text-center font-body text-m lg:text-m xl:text-l'style={{ borderTop: '2px solid white', borderBottom: '2px solid white', display: 'block', padding: '8px 0' }}>FAVE POSITION:<br />
+                                <span className='text-pink-200 text-center font-body text-m lg:text-m xl:text-l'style={{ borderTop: '1px solid white', borderBottom: '1px solid white', display: 'block', padding: '8px 0' }}>FAVE POSITION:<br />
                                 {favPosition}</span>
                             </div>
                         </div>                    
@@ -62,7 +62,7 @@ export default function NftFlingComponent({ userAddress, id, image, name, favPos
                 isClaimed===false ?
                     <div className='flex justify-center mt-6'>
                         <p>You're bringing home a friend!</p>
-                        <button className='bg-[#414A78] p-2 border-2 border-solid border-white text-xl text-[#f3f3f3] rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white mb-4'
+                        <button className='bg-[#414A78] p-2 border-2 border-solid border-white text-xl text-[#f3f3f3] rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white mb-4 font-text'
                         type="button"
                         onClick={(e)=>claimNft(e)}>
                         CLAIM!
@@ -70,15 +70,15 @@ export default function NftFlingComponent({ userAddress, id, image, name, favPos
                     </div>
                     
                 :
-                    <button className='bg-[#414A78] p-2 border-2 border-solid border-white text-[#f3f3f3] text-xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white mb-4'
+                    <button className='bg-[#414A78] p-2 border-2 border-solid border-white text-[#f3f3f3] text-xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white mb-4 font-text'
                      type="button"
                      disabled
                      style={{cursor: "not-allowed"}}>
-                     Already Claimed!
+                     ALREADY CLAIMED!
                     </button>
             :
                     mamboName ?
-                        <p className='font-body text-[#f3f3f3] font-black italic text-center'>Going home with: <span>{mamboName}</span></p>
+                        <p className='font-body text-[#f3f3f3] font-black italic text-center mb-4'>Going home with: <span>{mamboName}</span></p>
                     :
                         flingWinner ?
                             <p className='font-body text-[#f3f3f3] font-black italic text-center'>Going home with: <span>{flingWinner.slice(0, 3)} ... {flingWinner.slice(flingWinner.length-3, flingWinner.length)}</span></p>

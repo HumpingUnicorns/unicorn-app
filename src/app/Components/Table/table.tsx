@@ -97,7 +97,7 @@ export default function Table({nftData, stakedNftDataFromOwner, isSuccessNftStak
                     </div>
                     <div className='border-4 rounded-lg md:rounded-3xl bg-[#6f84ef57]'>
                         <div className="grid content-center w-full">
-                            <div className={`grid h-full grid-cols-pannel p-4 gap-4`}>
+                            <div className={`grid h-full grid-cols-pannel p-4 gap-2`}>
                                 {stakedNftDataFromOwner !== undefined && stakedNftDataFromOwner.length > 0 &&
                                     stakedNftDataFromOwner.map((nft: NftModel) => {
                                         return <NftComponent key={nft.id} id={nft.id} profileNft={nft.dataImage}
@@ -133,7 +133,7 @@ export default function Table({nftData, stakedNftDataFromOwner, isSuccessNftStak
                     </div>
                     <div className='border-4 rounded-lg md:rounded-3xl bg-[#6f84ef57]'>
                         <div className="grid content-center w-full">
-                            <div className={`grid h-full grid-cols-pannel p-4 gap-4`}>
+                            <div className={`grid h-full grid-cols-pannel p-4 gap-2`}>
                                 {nftData.map((nft: NftModel) => {
                                     return <NftComponent key={nft.id} id={nft.id} 
                                     nftTokenId={nft.tokenId}
