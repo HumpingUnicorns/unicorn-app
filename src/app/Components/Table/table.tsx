@@ -12,7 +12,7 @@ interface NftFilled {
     image: string; // Ou tout autre type approprié pour l'image
 }
 
-export default function Table({nftData, stakedNftDataFromOwner, isSuccessNftStaked, isSuccess}: any) {
+export default function Table({nftData, stakedNftDataFromOwner, isSuccessNftStaked, isSuccess, handleStakeData, handleUnstakeData}: any) {
     const [isChange, setIsChange] = useState(false);
     const [nftSelected, setNftSelected] = useState<any>([]);
     const [nbNftSelected, setNbNftSelected] = useState<any>(0);
@@ -156,7 +156,7 @@ export default function Table({nftData, stakedNftDataFromOwner, isSuccessNftStak
                 </div>
 
             }
-        <TotalHumping isHumpingSelected={isHumpingSelected} totalNft={nftData.length} totalNftStacked={stakedNftDataFromOwner.length} nftSelected={nftSelected} nbNftSelected={nbNftSelected}/>
+        <TotalHumping isHumpingSelected={isHumpingSelected} totalNft={nftData.length} totalNftStacked={stakedNftDataFromOwner.length} nftSelected={nftSelected} nbNftSelected={nbNftSelected} handleStakeData={handleStakeData} handleUnstakeData={handleUnstakeData}/>
         </div>
     )
 }

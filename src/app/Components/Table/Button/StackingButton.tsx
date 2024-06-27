@@ -9,14 +9,13 @@ interface Style {
     boxShadow: string;
 }
 
-export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSelected }: any) {
+export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSelected, handleStakeData, handleUnstakeData }: any) {
     const { address: userAddress } = useAccount();
     const [styleButton, setStyle] = useState<Style>();
     const [isWriteEnabled, setIsWriteEnabled] = useState(false);
     const [stackingAvailable, setStackingAvailable] = useState(false);
 
     const { writeContract, data, error, status } = useWriteContract();
-
     useEffect(() => {        
         if (data || error) {
           setIsWriteEnabled(false);
@@ -36,6 +35,12 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
     });
 
     const transactionSuccess = () => {
+        if( isHumpingSelected ) {
+            handleUnstakeData(nftSelected);
+        } else {
+            handleStakeData(nftSelected);
+        }
+        nftSelected = [];
         Toast.fire({
             icon: 'success',
             title: 'Transaction successful'
