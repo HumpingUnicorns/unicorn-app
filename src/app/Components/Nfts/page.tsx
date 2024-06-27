@@ -90,20 +90,32 @@ export default function NftPage() {
 
     // Update the data after an unstake tx
     const handleUnstakeData = (selectedNfts: any) => {
+        let newNftData: NftModel[] = [];
+        let newNftDataFromContract: NftModel[] = nftDataFromContract;
+    
         selectedNfts.forEach((id: number) => {
             let model = nftModelsById[id];
-            setNftData(prevItems => [...prevItems, model]);
-            setNftDataFromContract(nftDataFromContract.filter(item => item.tokenId != model.tokenId));
+            newNftData.push(model);
+            newNftDataFromContract = newNftDataFromContract.filter(item => item.tokenId !== model.tokenId);
         });
+    
+        setNftData(prevItems => [...prevItems, ...newNftData]);
+        setNftDataFromContract(newNftDataFromContract);
     }
 
     // Update the data after a stake tx
     const handleStakeData = (selectedNfts: any) => {
+        let newNftDataFromContract: NftModel[] = [];
+        let updatedNftData: NftModel[] = nftData;
+    
         selectedNfts.forEach((id: number) => {
             let model = nftModelsById[id];
-            setNftDataFromContract(prevItems => [...prevItems, model]);
-            setNftData(nftData.filter(item => item.tokenId != model.tokenId));
+            newNftDataFromContract.push(model);
+            updatedNftData = updatedNftData.filter(item => item.tokenId !== model.tokenId);
         });
+    
+        setNftDataFromContract(prevItems => [...prevItems, ...newNftDataFromContract]);
+        setNftData(updatedNftData);
     }
 
     // This function will be called to get the NFTs for the user
