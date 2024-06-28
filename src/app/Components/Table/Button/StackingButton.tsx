@@ -26,12 +26,6 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer);
-            toast.addEventListener('mouseleave', Swal.resumeTimer);
-        }
     });
 
     const transactionSuccess = () => {
@@ -43,14 +37,15 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
         nftSelected = [];
         Toast.fire({
             icon: 'success',
-            title: 'Transaction successful'
+            title: 'Transaction successful',
+            timer: 2000
         });
     };
 
     const transactionPending = () => {
         Toast.fire({
             icon: 'info',
-            title: 'Transaction receive'
+            title: 'Transaction Received'
         });
     };
 
