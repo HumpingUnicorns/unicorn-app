@@ -5,23 +5,23 @@ import Logo from "./Logo";
 
 const Navbar = ({ toggle }: { toggle: () => void }) => {
   return (
-    <div className="w-full h-20 sticky top-0 mb-4">
+    <div className="w-full h-13 sticky top-0 mb-4">
       <div className="container mx-auto px-4 h-full">
         <div className="flex justify-between items-center h-full">
           <div className="flex items-center gap-10">
             <Logo />
-            <div className="flex gap-4 bg-[#EAEAEC] rounded-full p-4" style={{ boxShadow: "0 0.1rem 0 0 rgba(255, 255, 255, 0.1)" }}>
+            <div className="flex gap-4 bg-[#EAEAEC] rounded-full p-2" style={{ boxShadow: "0 0.1rem 0 0 rgba(255, 255, 255, 0.1)" }}>
               <a href="https://twitter.com/HumpingUnic0rns">
                 <Image src='/twitter_logo.png' alt="twitter_logo"
-                  width={50}
-                  height={50}
+                  width={25}
+                  height={25}
                   style={{ borderRadius: 999 }} className=""
                 />
               </a>
               <a href="https://discord.gg/eKPsXYsDnE">
                 <Image src='/discord_logo.webp' alt="discord_logo"
-                  width={50}
-                  height={50}
+                  width={25}
+                  height={25}
                   style={{ borderRadius: 999 }} className=""
                 />
               </a>
@@ -34,8 +34,8 @@ const Navbar = ({ toggle }: { toggle: () => void }) => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="40"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
             >
               <path

@@ -134,7 +134,7 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
     return (
         <div className="flex flex-col justify-center">
             {!stackingAvailable ?
-                <button className="bg-[#414A78] p-2 border-2 border-solid border-white font-text text-2xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white"
+                <button className="bg-[#414A78] p-2 border-2 border-solid border-white text-[#f3f3f3] font-text text-2xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white"
                     type="button"
                     onClick={handleApproveAll}>
                     Approve NFT

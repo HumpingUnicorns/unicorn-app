@@ -63,7 +63,7 @@ export const CustomButton = () => {
               if (!connected) {
                 return (
                   <div className=''>
-                    <button className='bg-[#414A78] p-2 border-2 font-text text-[#f3f3f3] border-solid border-white rounded-2xl hover:bg-pink-300 shadow-2xl shadow-blue-800/50' onClick={openConnectModal} type="button" style={{ boxShadow: "0 0.15rem 0 0 rgba(255, 255, 255, 0.2)" }}>
+                    <button className='bg-[#414A78] p-1 border-2 font-text text-[#f3f3f3] border-solid border-white rounded-xl hover:bg-pink-300 shadow-l shadow-blue-800/50' onClick={openConnectModal} type="button" style={{ boxShadow: "0 0.15rem 0 0 rgba(255, 255, 255, 0.2)" }}>
                       Connect Wallet
                     </button>
                   </div>
@@ -72,7 +72,7 @@ export const CustomButton = () => {
               if (chain.unsupported) {
                 return (
                   <div className=''>
-                    <button className='bg-[#414A78] p-2 border-2 border-solid border-white font-text rounded-2xl hover:bg-pink-300 shadow-2xl shadow-blue-800/50' onClick={openChainModal} type="button" style={{ boxShadow: "0 0.15rem 0 0 rgba(255, 255, 255, 0.25)" }}>
+                    <button className='bg-[#414A78] p-1 border-2 border-solid border-white font-text rounded-xl hover:bg-pink-300 shadow-l shadow-blue-800/50' onClick={openChainModal} type="button" style={{ boxShadow: "0 0.15rem 0 0 rgba(255, 255, 255, 0.25)" }}>
                       Wrong network
                     </button>
                   </div>
@@ -82,7 +82,7 @@ export const CustomButton = () => {
               return (
                 <div className='flex gap-4'>
                   <button
-                    className='bg-[#414A78] flex p-2 border-2 border-solid border-white font-text rounded-2xl hover:bg-pink-300 shadow-2xl shadow-blue-800/50'
+                    className='bg-[#414A78] flex p-1 border-2 border-solid border-white font-text rounded-xl hover:bg-pink-300 shadow-l shadow-blue-800/50'
                     onClick={openChainModal}
                     style={{ display: 'flex', alignItems: 'center', boxShadow: "0 0.15rem 0 0 rgba(255, 255, 255, 0.25)" }}
                     type="button"
@@ -109,7 +109,7 @@ export const CustomButton = () => {
                       </div>
                     )}
                   </button>
-                  <button className={`flex bg-[#414A78] border-2 border-solid border-white p-2 rounded-3xl font-text text-2xl font-black text-[#ffffff] hover:bg-pink-300 shadow-2xl shadow-blue-800/50`} onClick={openAccountModal} type="button" style={{ boxShadow: "0 0.15rem 0 0 rgba(255, 255, 255, 0.1)" }}>
+                  <button className={`flex bg-[#414A78] border-2 border-solid border-white p-1 rounded-2xl font-text text-xl font-black text-[#ffffff] hover:bg-pink-300 shadow-l shadow-blue-800/50`} onClick={openAccountModal} type="button" style={{ boxShadow: "0 0.15rem 0 0 rgba(255, 255, 255, 0.1)" }}>
                     {username || account.displayName}
                     {account.ensAvatar}
                     {account.displayBalance
