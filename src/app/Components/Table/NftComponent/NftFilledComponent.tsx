@@ -14,7 +14,7 @@ export default function NftFilledComponent({ id,image } : NftFilled){
         
             </div>
             <div className='w-full mt-1 mb-2'>
-                <span className='w-full text-pink-200 text-center font-body lg:text-sm sm:text-sm px-4' style={{ borderTop: '0.5px solid white', display: 'block', padding: '8px 0' }}>FAVE POSITION: ?</span>
+                <span className='w-full text-pink-200 text-center font-body lg:text-sm sm:text-sm px-4' style={{ borderTop: '0.5px solid white', display: 'block', padding: '8px 0' }}>FAVE POSITION: <br />?</span>
             </div>
             </div>
         </div>               
