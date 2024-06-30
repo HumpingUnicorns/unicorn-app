@@ -12,7 +12,7 @@ export default function RulesButton(){
     return(
         <div>
 
-        <button className='bg-[#414A78] p-2 border-2 border-solid border-white text-[#f3f3f3] font-text text-2xl rounded-2xl hover:bg-pink-300 shadow-2xl'
+        <button className='bg-[#414A78] p-1 border-2 border-solid border-white text-[#f3f3f3] font-text text-xl rounded-2xl hover:bg-pink-300 shadow-2xl'
                 type="button"
                 onClick={toggleShowRulesUnicorn}
                 >
@@ -20,7 +20,7 @@ export default function RulesButton(){
         </button> 
         {showRulesUnicorn && <Modal
             content={<>
-                <Image src="/humping_images/How_To_Hump.png" width={320} height={100} alt="rules of unicorn app"/>
+                <Image src="/humping_images/How_To_Hump_2.png" width={320} height={100} alt="rules of unicorn app"/>
             </>}
             handleClose={toggleShowRulesUnicorn}
         />}

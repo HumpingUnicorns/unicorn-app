@@ -38,14 +38,14 @@ export default function NftFlingComponent({ userAddress, id, image, name, favPos
             <div className='w-full h-full overflow-hidden bg-[#6e7cc4b1] border-2 border-white rounded-xl'>
                     {image ?
                    
-                        <div className='w-full  h-full flex flex-col justify-center items-center '>
+                        <div className='w-full h-full flex flex-col justify-center items-center'>
                             <img alt="nftImg" src={image} className="w-full h-auto"/>
                             <hr className='w-full bg-white'></hr>
                             <div className="w-full flex justify-center items-center text-white font-bold font-text text-xl mt-1 mb-0.5">
                                 {name}
                             </div>
-                            <div className='p-2'>
-                                <span className='text-pink-200 text-center font-body text-m lg:text-m xl:text-l'style={{ borderTop: '1px solid white', borderBottom: '1px solid white', display: 'block', padding: '8px 0' }}>FAVE POSITION:<br />
+                            <div className='w-full mt-1 mb-2'>
+                                <span className='text-pink-200 text-center font-body text-m lg:text-m xl:text-l'style={{ borderTop: '1px solid white', display: 'block', padding: '8px 0' }}>FAVE POSITION:<br />
                                 {favPosition}</span>
                             </div>
                         </div>                    

@@ -188,6 +188,7 @@ export default function NftPage() {
                         <Table nftData={nftData} stakedNftDataFromOwner={nftDataFromContract} isSuccessNftStaked={isSuccessNftStaked} isSuccess={isSuccess} handleStakeData={handleStakeData} handleUnstakeData={handleUnstakeData} />
                     </div>
                     <div className='flex flex-col gap-2 justify-start place-items-center md:col-start-5 md:col-end-7'>
+                    <RulesButton />
                         <div className='flex justify-center place-content-center w-8/12 rounded-3xl border-4 bg-[#6f84ef57]'>
                             <div className='flex-col w-full '>
                                 <span className='flex justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] font-text text-[#f3f3f3] text-4xl my-6'>LAST FLING</span>
@@ -195,7 +196,7 @@ export default function NftPage() {
                             </div>
 
                         </div>
-                        <RulesButton />
+                        
 
                     </div>
                 </div>

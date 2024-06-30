@@ -8,7 +8,7 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = props => {
   return (
-    <div className="popup-box flex justify-center">
+    <div className="popup-box flex justify-center fixed inset-0 z-50">
       <div className={`box flex-col`}>
         {props.content}
         <button
@@ -16,11 +16,11 @@ const Modal: React.FC<ModalProps> = props => {
             data-text="Fermer"
             onClick={props.handleClose}
         >
-                            <span className="align-middle">C</span>
-                            <span className="align-middle">L</span>
-                            <span className="align-middle">O</span>
-                            <span className="align-middle">S</span>
-                            <span className="align-middle">E</span>
+                            <span className="align-middle text-white">C</span>
+                            <span className="align-middle text-white">L</span>
+                            <span className="align-middle text-white">O</span>
+                            <span className="align-middle text-white">S</span>
+                            <span className="align-middle text-white">E</span>
         </button>
       </div>
     </div>

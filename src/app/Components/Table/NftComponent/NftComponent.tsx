@@ -40,8 +40,8 @@ export default function NftComponent({ id, profileNft, nftTokenId, name, favPosi
         <div className="w-full mt-1 mb-1 flex justify-center items-center text-white font-bold font-text lg:text-base sm:text-sm md:text-xxs">
           {name}
         </div>
-        <div className='mt-1 mb-4'>
-          <span className='w-full text-pink-200 text-center font-body lg:text-sm sm:text-sm md:text-xxs px-2 p-'style={{ borderTop: '0.5px solid white', borderBottom: '0.5px solid white', display: 'block', padding: '8px 0' }}>{favPosition}</span>
+        <div className='w-full mt-1 mb-2'>
+          <span className='w-full text-pink-200 text-center font-body lg:text-sm sm:text-sm md:text-xxs px-2 p-'style={{ borderTop: '0.5px solid white', display: 'block', padding: '8px 0' }}>FAVE POSITION: <br /> {favPosition}</span>
         </div>
       </div>
     </div>
@@ -55,8 +55,8 @@ export default function NftComponent({ id, profileNft, nftTokenId, name, favPosi
         <div className="w-full mt-1 mb-1 flex justify-center items-center text-white font-bold font-text lg:text-base sm:text-sm md:text-xxs">
           {name}
         </div>
-        <div className='mt-1 mb-4'>
-        <span className='w-full text-pink-200 text-center font-body lg:text-sm sm:text-sm md:text-xxs px-2 p-'style={{ borderTop: '0.5px solid white', borderBottom: '0.5px solid white', display: 'block', padding: '8px 0' }}>{favPosition}</span>
+        <div className='w-full mt-1 mb-2'>
+        <span className='w-full text-pink-200 text-center font-body lg:text-sm sm:text-sm md:text-xxs px-2 p-'style={{ borderTop: '0.5px solid white', display: 'block', padding: '8px 0' }}>FAVE POSITION: <br /> {favPosition}</span>
         </div>
       </div>
     </div>
