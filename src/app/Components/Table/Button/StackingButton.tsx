@@ -2,6 +2,8 @@ import { useAccount, useReadContracts, useWriteContract, useWaitForTransactionRe
 import abi from "../../../abi.json";
 import abiNft from "../../../abiNft.json";
 import { useEffect, useState } from 'react';
+import Modal from '../../Modal/Modal';
+import TwitterIntent from '../../utils/Twitter/TwitterIntent';
 import Swal from 'sweetalert2';
 
 interface Style {
@@ -14,6 +16,7 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
     const [styleButton, setStyle] = useState<Style>();
     const [isWriteEnabled, setIsWriteEnabled] = useState(false);
     const [stackingAvailable, setStackingAvailable] = useState(false);
+    const [showTwitterModal, setShowTwitterModal] = useState<Boolean>(false);
 
     const { writeContract, data, error, status } = useWriteContract();
     useEffect(() => {        
@@ -28,11 +31,18 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
         showConfirmButton: false,
     });
 
+    const toggleShowTwitterModal = () => {
+        setShowTwitterModal((current) => !current);
+        
+      }
+
+
     const transactionSuccess = () => {
         if( isHumpingSelected ) {
             handleUnstakeData(nftSelected);
         } else {
             handleStakeData(nftSelected);
+            toggleShowTwitterModal();
         }
         nftSelected = [];
         Toast.fire({
@@ -158,6 +168,13 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
                         <span className="text-3xl">(pull out)</span>
                     </button>
                 }
+            {showTwitterModal && <Modal
+            content={<>
+                <TwitterIntent/>
+            </>}
+            handleClose={toggleShowTwitterModal}
+        />}
+
         </div>
     );
 }
