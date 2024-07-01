@@ -25,6 +25,13 @@ const meera_inimai = Meera_Inimai({
 export const metadata: Metadata = {
   title: 'Hump House',
   description: 'A place for unicorns to explore sexual fantasies with friends',
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Humping Unicorns Hump House',
+    description: 'A place for unicorns to explore sexual fantasies with friends',
+    site: '@HumpingUnic0rns',
+    images: ['https://i.imgur.com/2tTw2dB.png'], // Must be an absolute URL
+  },
 }
 
 export default function RootLayout(props: { children: ReactNode }) {
