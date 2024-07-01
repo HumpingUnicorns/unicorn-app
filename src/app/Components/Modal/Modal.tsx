@@ -8,19 +8,16 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = props => {
   return (
-    <div className="popup-box flex justify-center fixed inset-0 z-50">
-      <div className={`box flex-col`}>
+    <div className="popup-box flex justify-center items-center fixed inset-0 z-50">
+      <div className={`box flex flex-col items-center`}>
         {props.content}
         <button
-            className={`w-full bg-[#414A78] p-2 border-4 mt-2 border-solid border-white font-text text-2xl rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white space-x-2`}
+            className={`bg-[#4d619e] p-2 mt-2 border-2 border-solid border-white text-[#f3f3f3] font-text text-sm rounded-xl hover:bg-pink-300 mx-auto`}
             data-text="Fermer"
             onClick={props.handleClose}
         >
-                            <span className="align-middle text-white">C</span>
-                            <span className="align-middle text-white">L</span>
-                            <span className="align-middle text-white">O</span>
-                            <span className="align-middle text-white">S</span>
-                            <span className="align-middle text-white">E</span>
+                            <span className="align-middle text-white">X</span>
+                            
         </button>
       </div>
     </div>
