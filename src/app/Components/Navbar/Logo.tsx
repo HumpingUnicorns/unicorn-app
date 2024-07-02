@@ -23,6 +23,7 @@ const Logo = () => {
   return (
     <>
     <div style={{ display: showButton ? "none" : "block" }}>
+        <a href="http://humpingunicorns.com">
         <Image
           src="/humping_images/avatar.webp"
           alt="Logo"
@@ -30,6 +31,7 @@ const Logo = () => {
           height={width < 1024 ? "22" : "33"}
           className="relative"
         />
+        </a>
     </div>
         
     </>
