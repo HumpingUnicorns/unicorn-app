@@ -1,7 +1,7 @@
 import { useAccount, useReadContracts, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
 import abi from "../../../abi.json";
 import abiNft from "../../../abiNft.json";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Modal from '../../Modal/Modal';
 import TwitterIntent from '../../utils/Twitter/TwitterIntent';
 import Swal from 'sweetalert2';
@@ -20,7 +20,7 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
     const [showTwitterModal, setShowTwitterModal] = useState<Boolean>(false);
 
     const { writeContract, data, error, status } = useWriteContract();
-    let approvalData: WriteContractReturnType | undefined;
+    const isApprovalTransaction = useRef(false);
     
     useEffect(() => {        
         if (data || error) {
@@ -41,7 +41,7 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
 
 
     const transactionSuccess = () => {
-        if( data != approvalData ) {
+        if( !isApprovalTransaction.current ) {
             if( isHumpingSelected ) {
                 handleUnstakeData(nftSelected);
             } else {
@@ -81,7 +81,7 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
       hash: data,
     });
 
-    useEffect(() => {     
+    useEffect(() => {   
         if(isConfirming){
             transactionPending()
         }
@@ -111,7 +111,8 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
     }, [nbNftSelected]);
 
     const handleApproveAll = async () => {
-        await writeContract({
+        isApprovalTransaction.current = true;
+        writeContract({
             abi: abiNft,
             address: process.env.NEXT_PUBLIC_HUMPING_CONTRACT_MAIN as `0x${string}`,
             functionName: 'setApprovalForAll',
@@ -120,11 +121,11 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
                     true
                 ],
         });
-        approvalData = data; 
     };
     
     const handleTransaction = async (listOfId: string[], functionName: string) => {
         setIsWriteEnabled(true);
+        isApprovalTransaction.current = false;
         const listIdTemp = listOfId.map((id: string) => parseInt(id));
         try {
              await writeContract({
