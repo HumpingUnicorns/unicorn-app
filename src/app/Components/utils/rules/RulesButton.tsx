@@ -20,7 +20,7 @@ export default function RulesButton(){
         </button> 
         {showRulesUnicorn && <Modal
             content={<>
-                <Image src="/humping_images/How_To_Hump_2.png" width={320} height={100} alt="rules of unicorn app"/>
+                <Image src="/humping_images/How_To_Hump_2.png" width={380} height={100} alt="rules of unicorn app"/>
             </>}
             handleClose={toggleShowRulesUnicorn}
         />}

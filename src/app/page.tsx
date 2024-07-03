@@ -53,7 +53,7 @@ function App() {
                         </div> }
             </div>
               { userAddress !== undefined && userChain===chains[0].id && 
-              <div> <p className='flex justify-center font-body text-sm text-center text-[#f3f3f3] p-4 mb-5'>Here you'll be able to stake your unicorns & be in with a chance of bringing home a fren! <br /> <br />Once staked (HUMPING), random weekly FLINGS will occur. Depending on your unicorn's FAVE POSITION, it could be matched with one waiting in the house... <br />If one of your Humping Unicorns is matched after a FLING, you can claim it and bring it home to your wallet!</p> <NftPage /></div>
+              <div> <p className='flex justify-center font-body text-[14px] text-center text-[#f3f3f3] p-4 mb-5'>Here you'll be able to stake your unicorns & be in with a chance of bringing home a fren! <br /> <br />Once staked (HUMPING), random weekly FLINGS will occur. Depending on your unicorn's FAVE POSITION, it could be matched with one waiting in the house... <br />If one of your Humping Unicorns is matched after a FLING, you can claim it and bring it home to your wallet!</p> <NftPage /></div>
               }
                     
         </div>
