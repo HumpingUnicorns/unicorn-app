@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: 'Humping Unicorns Hump House',
     description: 'A place for unicorns to explore sexual fantasies with friends',
     site: '@HumpingUnic0rns',
-    images: ['https://i.imgur.com/2tTw2dB.png'], // Must be an absolute URL
+    images: ['https://imgur.com/2tTw2dB'], // Must be an absolute URL
   },
 }
 
