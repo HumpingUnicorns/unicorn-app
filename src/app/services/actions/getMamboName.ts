@@ -19,7 +19,7 @@ export async function getMamboNameApi(winnerAddress: string) {
             const data = await response.json();            
             // Vérifiez si winnerAddress est présent dans la réponse
             if (data.hasOwnProperty(winnerAddress)) {
-                const mamboName = data[winnerAddress].mamboName;
+                const mamboName = data[winnerAddress].mamboName || data[winnerAddress].avvyName;
                 return mamboName;
             } else {
                 throw new Error('Winner address not found in the response');
