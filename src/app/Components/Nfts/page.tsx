@@ -126,7 +126,7 @@ export default function NftPage() {
                 if (result) {
                     //Get mamboName (null if not exist)
                     const mamboName = await getMamboNameApi(flingData[4]);
-                    const instance: NftFlingModel = new NftFlingModel(result.id, result.awsImage, result.tokenId, result.metadata.name, result.metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position")?.value , flingData[3], flingData[4], mamboName);
+                    const instance: NftFlingModel = new NftFlingModel(result.id, result.awsImage, result.tokenId, result.metadata.name, result.metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position")?.value , flingData[4], flingData[5], mamboName);
                     setNftDataFling(instance);
                 }
             }
