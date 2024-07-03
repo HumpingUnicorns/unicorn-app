@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Modal from '../../Modal/Modal';
 import TwitterIntent from '../../utils/Twitter/TwitterIntent';
 import Swal from 'sweetalert2';
+import { WriteContractReturnType } from 'wagmi/actions';
 
 interface Style {
     cursor: string;
@@ -19,6 +20,8 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
     const [showTwitterModal, setShowTwitterModal] = useState<Boolean>(false);
 
     const { writeContract, data, error, status } = useWriteContract();
+    let approvalData: WriteContractReturnType;
+    
     useEffect(() => {        
         if (data || error) {
           setIsWriteEnabled(false);
@@ -38,13 +41,14 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
 
 
     const transactionSuccess = () => {
-        if( isHumpingSelected ) {
-            handleUnstakeData(nftSelected);
-        } else {
-            handleStakeData(nftSelected);
-            toggleShowTwitterModal();
+        if( data != approvalData ) {
+            if( isHumpingSelected ) {
+                handleUnstakeData(nftSelected);
+            } else {
+                handleStakeData(nftSelected);
+                toggleShowTwitterModal();
+            }    
         }
-        nftSelected = [];
         Toast.fire({
             icon: 'success',
             title: 'Transaction successful',
@@ -77,7 +81,7 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
       hash: data,
     });
 
-    useEffect(() => {          
+    useEffect(() => {     
         if(isConfirming){
             transactionPending()
         }
@@ -115,7 +119,8 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
                     process.env.NEXT_PUBLIC_HUMPING_STACKING_CONTRACT,
                     true
                 ],
-        });    
+        });
+        approvalData = data; 
     };
     
     const handleTransaction = async (listOfId: string[], functionName: string) => {
