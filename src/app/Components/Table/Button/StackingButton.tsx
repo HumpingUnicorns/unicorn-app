@@ -20,7 +20,7 @@ export default function StackingButton({ isHumpingSelected, nftSelected, nbNftSe
     const [showTwitterModal, setShowTwitterModal] = useState<Boolean>(false);
 
     const { writeContract, data, error, status } = useWriteContract();
-    let approvalData: WriteContractReturnType;
+    let approvalData: WriteContractReturnType | undefined;
     
     useEffect(() => {        
         if (data || error) {
