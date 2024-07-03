@@ -39,8 +39,8 @@ export default function TotalHumping({isHumpingSelected, totalNft, totalNftStack
 
     return (
             <div
-                className="grid grid-rows-1 grid-cols-3 gap-1 place-items-center  w-full text-2xl font-text font-black uppercase mt-4 ">
-                <div style={{ borderRadius: 600 }}
+                className="grid grid-rows-1 grid-cols-1 gap-1 place-items-center  w-full text-2xl font-text font-black uppercase mt-4 ">
+                {/* <div style={{ borderRadius: 600 }}
                     className={`flex flex-col justify-center pl-2 pr-2 pt-6 pb-6 w-3/5 text-white border-4 border-white bg-[#414A78] shadow-2xl shadow-[#414A78] opacity-90`}>
                     {isHumpingSelected ?
                      <p className={`flex justify-center w-full font-spegiel text-xs sm:text-base md:text-xs lg:text-lg xl:text-xl`}>
@@ -50,11 +50,11 @@ export default function TotalHumping({isHumpingSelected, totalNft, totalNftStack
                      NFT</p> 
                     }
                     <h2 className={`flex justify-center w-full font-body text-xs sm:text-sm md:text-sm lg:text-lg xl:text-xl`}>{isHumpingSelected ? totalNftStacked : totalNft}</h2>
-                </div>
+                </div> */}
                 <div>
                 <StackingButton isHumpingSelected={isHumpingSelected} nftSelected={nftSelected} nbNftSelected={nbNftSelected} handleStakeData={handleStakeData} handleUnstakeData={handleUnstakeData}/>
                 </div>
-                <div style={{ borderRadius: 600 }}
+                {/* <div style={{ borderRadius: 600 }}
                     className={`flex flex-col justify-center pl-2 pr-2 pt-6 pb-6 w-3/5 text-white border-4 border-white bg-[#414A78] shadow-2xl shadow-[#414A78] opacity-90`}>
                     <p className={`flex justify-center w-full font-spegiel text-xs sm:text-base md:text-xs lg:text-lg xl:text-xl`}>Next
                         Fling</p>
@@ -67,7 +67,7 @@ export default function TotalHumping({isHumpingSelected, totalNft, totalNftStack
                         }
                     </div>
                     </h2>
-                </div>
+                </div> */}
             </div>
     )
 }
