@@ -59,7 +59,7 @@ export default function NftPage() {
             ],
         });
 
-    const { data: flingData, isSuccess } =
+    const { data: flingData, isSuccess: isFlingSuccess } =
         useContractRead({
             abi,
             address: process.env.NEXT_PUBLIC_HUMPING_STACKING_CONTRACT as `0x${string}`,
@@ -67,11 +67,11 @@ export default function NftPage() {
         });
 
     useEffect(() => {
-        if (isSuccess && flingData) {
+        if (isFlingSuccess && flingData) {
             const intIds = parseInt(flingData.toString()); // ou Number(bigInt) pour une conversion explicite
             getNftFlingDataFromContract(flingData, intIds);
         }
-    }, [flingData, isSuccess]);
+    }, [flingData, isFlingSuccess]);
 
     useEffect(() => {
         if (isSuccessNftStaked) {
@@ -125,7 +125,7 @@ export default function NftPage() {
                 const result = await queryClient.fetchQuery('nftFling', () => getNftFlingDataFromContractApi(nftIdFromContract));
                 if (result) {
                     //Get mamboName (null if not exist)
-                    const mamboName = await getMamboNameApi(flingData[3]);
+                    const mamboName = await getMamboNameApi(flingData[4]);
                     const instance: NftFlingModel = new NftFlingModel(result.id, result.awsImage, result.tokenId, result.metadata.name, result.metadata.attributes.find((attribute:Attribute) => attribute.traitType === "Favourite Position")?.value , flingData[3], flingData[4], mamboName);
                     setNftDataFling(instance);
                 }
@@ -185,7 +185,7 @@ export default function NftPage() {
             return <div>
                 <div className='grid grid-cols-1 md:grid-cols-6 gap-4'>
                     <div className='flex justify-center place-content-start md:col-start-2 md:col-end-5'>
-                        <Table nftData={nftData} stakedNftDataFromOwner={nftDataFromContract} isSuccessNftStaked={isSuccessNftStaked} isSuccess={isSuccess} handleStakeData={handleStakeData} handleUnstakeData={handleUnstakeData} />
+                        <Table nftData={nftData} stakedNftDataFromOwner={nftDataFromContract} isSuccessNftStaked={isSuccessNftStaked} isSuccess={isFlingSuccess} handleStakeData={handleStakeData} handleUnstakeData={handleUnstakeData} />
                     </div>
                     <div className='flex flex-col gap-2 justify-start place-items-center md:col-start-5 md:col-end-7'>
                     <RulesButton />
