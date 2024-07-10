@@ -60,7 +60,7 @@ export default function NftFlingComponent({ userAddress, id, image, name, favPos
             {
             flingWinner === userAddress ?
                 isClaimed===false ?
-                    <div className='flex justify-center mt-6'>
+                    <div className='flex justify-center mt-6 text-white'>
                         <p>You're bringing home a friend!</p>
                         <button className='bg-[#414A78] p-2 border-2 border-solid border-white text-xl text-[#f3f3f3] rounded-2xl hover:bg-pink-300 shadow-2xl shadow-white mb-4 font-text'
                         type="button"
