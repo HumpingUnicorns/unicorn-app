@@ -7,7 +7,7 @@ const publicClient = createPublicClient({
   transport: http()
 });
 
-const mamboProfileInstance = new MAMBOPROFILE(publicClient as any);
+const mamboProfileInstance = new MAMBOPROFILE(publicClient);
 
 export async function getMamboNameApi(winnerAddress: string) {
     const profile = await mamboProfileInstance.getProfile(winnerAddress as `0x${string}`);
