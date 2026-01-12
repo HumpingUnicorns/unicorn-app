@@ -24,7 +24,8 @@
     "utils": "^0.3.1",
     "viem": "latest",
     "wagmi": "^2.5.7",
-    "zod": "^3.23.4"
+    "zod": "^3.23.4",
+    "mambo-profiles": "^0.0.6"
   },
   "devDependencies": {
     "@types/node": "^20.7.2",
